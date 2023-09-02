@@ -1,0 +1,52 @@
+*******************LIST CẦN HỌC PHÁT TRIỂN ANDROID MOBILE APP JAVA***************************
+>>>> MỤC LỤC:
+ 1/ ngôn ngữ: Java
+  - Basix Java SE
+  - OOP
+ 2/ Tiềm hiểu về android sdk, jdk 
+ 3/ Tiềm hiểu về Git
+ 4/ Kiến thức cơ bản về ứng dụng
+  - Android
+    + Vòng đời của android 
+    + các bản phổ biến
+    + công cụ ide
+    + cách chạy build project như thế nào
+  
+  - Cài máy ảo: Genymotion, máy thật, máy ảo android studio
+    ...
+
+ 5/ Tiềm hiểu về file AndroidManifest.xml: file cấu hình các Activity
+  - Permision
+  - Application
+  
+ 6/ tiềm hiểu về giao diện layout: Tiềm hiểu về file activity_main.xml
+  - tiềm hiểu về view:
+   + Thẻ TextView: tạo chữ 
+   + Thẻ Button: tạo các nút nhấn button
+   + Thẻ ImageView: dẫn ảnh tạo logo, icon..
+   + Thẻ Checkbox: tạo các checkbox
+   + Thẻ Toggle Button
+   + Thẻ Radio Button: các nút check dạng tròn
+   .....
+ 7/ Tiềm hiểu về Log and Toast:  đánh dấu, hiển thi lưu thông tin, error... của một biến hay view nào đó
+  - tiềm hiểu về ViewGroup:
+   + LinearLayout
+   + RelativeLayout
+   + FrameLayout
+   + TableLayout
+
+ ***nội dung mục lục còn đang biên soạn****
+    1/Android, nền tảng di động phổ biến nhất thế giới
+    2/Intent và bộ lọc Intent
+    3/Kiến thức cơ bản về ứng dụng
+    4/File AndroidManifest.xml
+    5/Giao diện người dùng trên mobile
+    6/Xử lý đầu vào từ bàn phím
+    7/Widget của ứng dụng
+    8/Activity
+    9/Tùy chọn lưu trữ
+    10/Thiết kế sao cho ứng dụng có thể phản hồi tốt
+    11/Service
+    12/Lớp BroadcastReceiver
+    13Mẹo bảo mật
+    14/WebView

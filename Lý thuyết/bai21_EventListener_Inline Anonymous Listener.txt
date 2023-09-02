@@ -1,0 +1,142 @@
+******************INLINE ANONYMOUS LISTENER TRONG (XỬ LÝ SỰ KIỆN VỚI ONCLICKLISTENER)*************************
+>>>>>KHÁI NIỆM
+- Inline Anonymous Listener là một cách viết ngắn gọn và thuận tiện để xử lý sự kiện trong Android bằng cách
+triển khai một lớp Anonymous Inner Class trực tiếp trong mã Java.
+
+ - Một lớp Anonymous Inner Class là một lớp không có tên được triển khai ngay tại chỗ (trong chỗ), không cần phải
+ tạo một lớp mới riêng biệt như khi triển khai một giao diện. Lớp này được khai báo và triển khai ngay trong nơi 
+ sử dụng nó và thường chỉ sử dụng một lần duy nhất.
+
+ - Khi sử dụng Inline Anonymous Listener, bạn tạo một đối tượng của lớp Anonymous Inner Class và triển khai phương 
+ thức xử lý sự kiện bằng cách override các phương thức tương ứng trong giao diện sự kiện
+     (ví dụ: OnClickListener, OnCheckedChangeListener,...).
+
+==> lưu ý với cách thức này ta không cần thuộc tính OnClick của button trc đó
+==> đối với Inline Anonymous Listener thì không cần implement View.OnclickListener()
+
+
+
+
+***********************************************************************
+>>>> TRIỂN KHAI
+ ## Bước 01:  tạo file layout
+   vd: 5 button:...
+
+ ## Bước 02: xử lý với OnclickListener()
+   >> cách 01: viết phổ thông đúng cấu trúc
+
+        .......
+        public class InlineAnonymousListenerActivity extends AppCompatActivity {
+
+            private TextView textView;
+            private Button button1;
+            private Button button2;
+            private Button button3;
+            private Button button4;
+            private Button button5;
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_inline_anonymous_listener);
+
+                // gọi hàm init()
+                init();
+
+               //cách 01: xử lý sự kiện với kiểu Inline Anonymous Listener, viết rành mạch thủ công
+                button1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        textView.setText("Inline Listener");
+                    }
+                });
+
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        textView.setText("Inline Anonymous Listener");
+                    }
+                });
+
+                button3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        textView.setText("Activity Listener");
+                    }
+                });
+
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        textView.setText("Listener Variable");
+                    }
+                });
+
+                button2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        textView.setText("Excplicit Listener class");
+                    }
+                });
+
+
+           }
+
+            // tạo method init chứa liên kết các id bên layout
+            public void init(){:
+                textView = (TextView) findViewById(R.id.txtview);
+                button1=(Button) findViewById(R.id.btn1);
+                button2=(Button) findViewById(R.id.btn2);
+                button3=(Button) findViewById(R.id.btn3);
+                button4=(Button) findViewById(R.id.btn4);
+                button5=(Button) findViewById(R.id.btn5);
+            }
+
+        }
+
+        ==> cách này đúng chuẩn Inline Anonymous Listener, tuy nhiên quá dài dòng và tường mình đầy đủ-> code 
+        sinh ra khá dài
+
+
+
+     ==============================================
+     >> cách 02: sử dụng cách viết lambada tinh gọn code    
+
+            .........
+
+            public class InlineAnonymousListenerActivity extends AppCompatActivity {
+
+                private TextView textView;
+                private Button button1;
+                private Button button2;
+                private Button button3;
+                private Button button4;
+                private Button button5;
+
+                @Override
+                protected void onCreate(Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    setContentView(R.layout.activity_inline_anonymous_listener);
+
+                    // gọi hàm init()
+                    init();
+
+                    /* cách 02: viết kiểu lambada*/
+                    button1.setOnClickListener(v->textView.setText("Inline Listener"));
+                    button2.setOnClickListener(v->textView.setText("Inline Anonymous Listener"));
+                    button3.setOnClickListener(v->textView.setText("Activity Listener"));
+                    button4.setOnClickListener(v->textView.setText("Listener Variable"));
+                    button5.setOnClickListener(v->textView.setText("Excplicit Listener class"));
+                }
+
+                // tạo method init chứa liên kết các id bên layout
+                public void init(){
+                    textView = (TextView) findViewById(R.id.txtview);
+                    button1=(Button) findViewById(R.id.btn1);
+                    button2=(Button) findViewById(R.id.btn2);
+                    button3=(Button) findViewById(R.id.btn3);
+                    button4=(Button) findViewById(R.id.btn4);
+                    button5=(Button) findViewById(R.id.btn5);
+                }
+
+            }

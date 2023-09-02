@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ALERT DIALOG"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold" />
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_oneButton"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        android:text="ONE BUTTON"-->
+<!--        android:textSize="20dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/txt_name"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:background="@drawable/rectangle"-->
+<!--        android:layout_marginTop="10dp"/>-->
+    <Button
+        android:id="@+id/btn_oneButton"
+        tools:ignore="MissingConstraints"
+        android:text="ONE BUTTON"
+        app:layout_constraintTop_toBottomOf="@id/txt_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/btn_mau"/>
+
+    <Button
+        android:id="@+id/btn_twoButton"
+        style="@style/btn_mau"
+        tools:ignore="MissingConstraints"
+        android:text="TWO BUTTON"
+        app:layout_constraintTop_toBottomOf="@id/btn_oneButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btn_threeButton"
+        style="@style/btn_mau"
+        tools:ignore="MissingConstraints"
+        android:text="THREE BUTTON"
+        app:layout_constraintTop_toBottomOf="@id/btn_twoButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btn_alertItem"
+        style="@style/btn_mau"
+        tools:ignore="MissingConstraints"
+        android:text="ALERT ITEMS"
+        app:layout_constraintTop_toBottomOf="@id/btn_threeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btn_alertWithForm"
+        style="@style/btn_mau"
+        tools:ignore="MissingConstraints"
+        android:text="ALERT WITH FORM"
+        app:layout_constraintTop_toBottomOf="@id/btn_alertItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btn_alertSingle"
+        style="@style/btn_mau"
+        tools:ignore="MissingConstraints"
+        android:text="ALERT SINGLE CHOICE ITEMS"
+        app:layout_constraintTop_toBottomOf="@id/btn_alertItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btn_alertMulti"
+        style="@style/btn_mau"
+        tools:ignore="MissingConstraints"
+        android:text="ALERT MULTI CHOICE ITEMS"
+        app:layout_constraintTop_toBottomOf="@id/btn_alertSingle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

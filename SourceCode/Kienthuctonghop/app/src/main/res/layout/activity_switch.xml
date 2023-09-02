@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SwitchActivity"
+    android:padding="20dp"
+    android:gravity="center_vertical">
+
+    <!--dùng switch vaof toggle button để tạo hệ thông nút bật tắt liền kề-->
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:textOn="Bật"
+        android:textOff="Tắt"
+        android:id="@+id/tgl_btn"
+        android:layout_marginStart="40dp"
+        android:backgroundTint="@color/green"/>
+
+    <!--sử dụng Switch để tạo nút bật tắt trong cùng một toggleButton-->
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Công tắt"
+        android:id="@+id/sw"
+        android:layout_marginStart="5dp"
+        android:checked="true"
+        android:textOff="Tắt"
+        android:textOn="Bật"/>
+
+</LinearLayout>

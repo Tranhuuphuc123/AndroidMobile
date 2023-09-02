@@ -1,0 +1,68 @@
+****************************XỬ LÝ SỰ KIỆN EVENT LISTENER_INLINE LISTENER****************************
+>>>>KHÁI NIỆM
+ - Inline Listener là một cách viết ngắn gọn và thuận tiện để xử lý sự kiện trong Android bằng cách định nghĩa trực
+ tiếp mã xử lý sự kiện trong tệp layout XML hoặc trong mã Java. Thay vì tạo một lớp mới để triển khai các giao diện
+ như OnClickListener, bạn có thể chỉ định mã xử lý sự kiện trực tiếp trong XML hoặc Java.
+ - Xử lý sự kiện InlineListener thông qua cách thức cụ thể sau:
+   ====> dùng onclick="inlineListener" + kèm thiết lặp id bên layout
+   ====> đối với Inline Listener thì không cần implement View.OnclickListener()
+
+
+******************************************************************************************************
+>>>>>TRIỂN KHAI:
+ ## Bước 01:tạo layout
+  => vd ta tạo 5 button cosmax id: btn1->btn5(tự hiểu)
+  => ánh xạ với onClick="inlinelistener" của các button
+
+ ## Bước 02: xử lý sự kiện bên Activity
+   >>Cách thức: sử dụng onClick và id
+
+              package com.example.kienthuctonghopactivity;
+
+              import  android.app.Activity;
+              import  android.widget.*;
+              import android.os.Bundle;
+              import android.view.View;
+
+              import androidx.appcompat.app.AppCompatActivity;
+
+              public class InlineListenerActivity extends AppCompatActivity{
+                  private TextView textView;
+               
+                  @Override
+                  protected void onCreate(Bundle savedInstanceState) {
+                      super.onCreate(savedInstanceState);
+                      setContentView(R.layout.activity_inline_listener); 
+                  }
+
+                // xử lý sự kiện với cách thức inline Listener sử dụng android:onClick
+                public void inlineListener(View v) {
+                    // dùng switch case để xử lý từng Button
+                    switch (v.getId()) {
+                        case R.id.btn1:
+                            textView.setText("Inline Listener");
+                            break;
+                        case R.id.btn2:
+                            textView.setText("Inline Anonymous Listener");
+                            break;
+                        case R.id.btn3:
+                            textView.setText("Activity Listener");
+                            break;
+                        case R.id.btn4:
+                            textView.setText("Listener Variable");
+                            break;
+                        case R.id.btn5:
+                            textView.setText("Excplicit Listener class");
+                            break;
+                        default:
+                            textView.setText("*********");
+                            break;
+                    }
+                }
+            }
+           ===> cách này khá gọn và hay tuy nhiên do các phiên bản cũ lâu quá nên việc gọi case R có vấn đề(chưa khắc phục đc)
+           ===> có thể sử dụng hnieeuf cách viết khác nhau dự trên Onclick và id đc thiết lặp trc bên layout, cách thức triển 
+           khai này đc gọi là InlineLister
+
+
+      

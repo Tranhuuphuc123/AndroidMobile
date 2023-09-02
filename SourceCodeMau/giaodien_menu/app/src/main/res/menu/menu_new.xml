@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_maincontact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Main Contact" />
+    <item
+        android:id="@+id/action_contactlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Contact List" />
+    <item
+        android:id="@+id/action_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Settings" />
+</menu>

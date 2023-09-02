@@ -1,0 +1,39 @@
+*********************TIỀM HIỂU VỀ THUỘC TÍNH KÍCH THƯỚC WRAP-CONTENT VS MATCH-PARENT**************************
+>>>>>KHÁI NIỆM:
+ ## MATCH-PARENT
+  => Thiết lập kích thước 
+   + width: độ rộng
+   + height: chiều cao
+   -> được sử dụng để chỉ định rằng kích thước của View sẽ được kéo dài để đạt kích thước 
+   view cha của nó.
+   -> Khi sử dụng match-parent, View sẽ được kéo dài để điền đầy toàn bộ không gian của
+   cha, dù nội dung bên trong View có thể không sử dụng hết không gian đó.
+   -> Nếu không có ràng buộc chiều dài, View sẽ có kích thước bằng kích thước cha theo chiều 
+   dọc (height) hoặc chiều ngang (width) tùy thuộc vào thuộc tính áp dụng.
+   -> thường được sử dụng khi bạn muốn View chiếm toàn bộ không gian có sẵn của cha hoặc khi
+   bạn muốn các View cùng chiếm cùng một phần trên giao diện.
+
+
+********************************************
+ ## WRAP-CONTENT
+  => Thiết lập kích thước 
+   + width: độ rộng
+   + height: chiều cao
+   -> wrap-content được sử dụng để chỉ định rằng kích thước của View sẽ được điều chỉnh tự động
+   sao cho phù hợp với nội dung bên trong View.
+     ++vd: 
+       có một text, hay button thì wrap-content chỉ định kt bao quanh cái text hay button đó thui
+     chứ nó không full all như match-parent
+
+   -> Khi sử dụng wrap-content, View sẽ không chiếm quá nhiều không gian trong giao diện.
+   -> Khi kích thước nội dung bên trong View thay đổi, View sẽ tự động thay đổi kích thước 
+   của mình để vừa vặn nội dung.
+   -> Wrap-content không bao giờ làm cho View vượt quá kích thước view cha của nó.
+
+
+****Note****
+===> Tóm lại,
+    >> wrap-content dùng để điều chỉnh kích thước View sao cho vừa vặn với nội dung bên trong
+    >> match-parent dùng để kéo dài View để lấp đầy không gian của cha. 
+    --> Sự lựa chọn giữa hai thuộc tính này phụ thuộc vào yêu cầu bố trí và thiết kế giao diện của
+    ứng dụng Android của bạn.

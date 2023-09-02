@@ -1,0 +1,150 @@
+************************TIỀM HIỂU VỀ CÁC CÁCH XỬ LÝ NGÀY GIỜ VỚI DATEPIKER************************
+>>>>>KHÁI NIỆM
+ - Dialog (hộp thoại) là một cửa sổ nhỏ được hiển thị phía trước một Activity. Dialog giúp
+người dùng chọn và xác nhận hành động, thông báo hoặc hiển thị thông báo cảnh báo. Khi
+Dialog được kích hoạt, Activity sẽ mất tiêu điểm. Nó được sử dụng để làm gián đoạn hoạt
+động của người dùng và buộc người dùng hiện một nhiệm vụ liên quan đến hoạt động hiện
+tại. Có nhiều Dialog là lớp con của lớp Dialog phục vụ cho một nhiệm vụ cụ thể
+  1. DatePicker Dialog - giúp người dùng chọn một ngày từ chế độ xem ngày.
+  2. TimePicker Dialog - giúp người dùng chọn thời gian từ chế độ xem chọn thời gian.
+  3. Progress Dialog - hiển thị một bánh xe tiến độ hoặc thanh tiến trình cho người dùng.
+  4. Alert Dialog - Nó có thể quản lý các nút 0, một, hai hoặc ba. Nó cũng quản lý tập hợp các
+  mục được bao gồm các hộp kiểm hoặc nút radio.
+  5. Toasts - sẽ hiển thị thông tin trong một khoảng thời gian giới hạn. Chúng có thể được sử
+  dụng như trên các thông báo trên màn hình để hiển thị gợi ý hoặc thông tin trạng thái.
+  6. Custom Dialog - Một hộp thoại có bố cục tùy chỉnh theo yêu cầu của người dùng.
+
+  ===> như vậy qua các bài về tạo Toast, Alert dialog hay date picker hay CalenderView... 
+  tất cả đều là Dialog hộp thoại xuất hiện với nhiều mục đích khác nhau
+
+  ==> trong bài này ta tiềm hiểu không chỉ là date picker: ấn định ngày giờ tháng năm trong android
+  mà còn tiềm hiểu thêm nhiều dạng Dialog khác nhau. Date picker là một Dialog giúp xây dựng ứng dụng 
+  yêu cầu người dùng nhập ngày, chẳng hạn như đặt lịch hẹn, tạo sự kiện, và nhiều tình huống khác.
+  
+
+
+
+*************************************************************************
+>>>>>THUỘC TÍNH
+
+ => DatePicker trong Android là một thành phần giao diện người dùng cho phép người dùng chọn một
+ ngày từ một giao diện được cung cấp bởi hệ thống. Điều này thường được sử dụng trong các ứng dụng
+ yêu cầu người dùng nhập ngày, chẳng hạn như đặt lịch hẹn, tạo sự kiện, và nhiều tình huống khác.
+
+=> Dưới đây là một số thuộc tính quan trọng liên quan đến DatePicker trong Android:
+
+ 1/ android:id: 
+  => Định danh duy nhất cho DatePicker, cho phép bạn tương tác với nó trong mã Java hoặc Kotlin.
+
+ 2/ android:layout_width và android:layout_height:
+  => Xác định kích thước của DatePicker trong giao diện.
+
+ 3/ android:datePickerMode: 
+  => Xác định chế độ của DatePicker. Có hai giá trị chính:
+
+   + spinner: Hiển thị ngày tháng dưới dạng danh sách cuộn.
+   + calendar: Hiển thị ngày tháng dưới dạng lịch.
+
+ 4/ android:minDate và android:maxDate: 
+  => Xác định ngày tối thiểu và ngày tối đa mà người dùng có thể chọn.
+
+ 5/ android:date:
+  => Được sử dụng để thiết lập ngày mặc định cho DatePicker.
+
+ 6/ android:layout_gravity: 
+  => Xác định vị trí của DatePicker trong khung giao diện cha, chẳng hạn như trung tâm, trái, phải, ...
+
+ 7/ android:background: 
+  => Xác định hình nền của DatePicker.
+
+ 8/ android:onDateChanged:
+  => Thuộc tính này cho phép bạn định nghĩa một sự kiện lắng nghe để xử lý khi người dùng thay
+  đổi ngày trên DatePicker.
+
+ 9/ android:calendarViewShown: 
+  => Xác định xem lịch hiển thị bên dưới DatePicker trong chế độ lịch. 
+  Giá trị mặc định là "false".
+
+
+
+************************************************************************
+>>>>CODE DEMO
+ => xem code mô phỏng các dạng date picker và Dialog khác trong SourceCode/DatePicker_tonghop
+
+ ## demo một cách thiết kế:
+  > layout:
+           ......
+              <?xml version="1.0" encoding="utf-8"?>
+              <androidx.constraintlayout.widget.ConstraintLayout 
+              xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  tools:context=".DatePickerDialog_Calender">
+
+
+                  <TextView
+                      android:id="@+id/txt_datepickerDialog_calender"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      tools:ignore="MissingConstraints"
+                      android:text="Select Date"
+                      android:textSize="30dp"
+                      app:layout_constraintTop_toTopOf="parent"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      android:layout_marginTop="30dp"/>
+
+              </androidx.constraintlayout.widget.ConstraintLayout>
+
+           
+        > class
+         public class DatePickerDialog_Calender extends AppCompatActivity {
+        private TextView txt_datepicker_calender;
+        private DatePickerDialog.OnDateSetListener datepickerListenser;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_date_picker_dialog_calender);
+            // gọi init
+            init();
+
+            // tiến hành xử lý sự kiện khi nhấn nút txt_datepicker_calender
+            txt_datepicker_calender.setOnClickListener(view->{
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(DatePickerDialog_Calender.this, 
+                datepickerListenser, year, month,day);
+
+                dialog.show();
+            });
+
+            // xử lý sự kiện trực tiếp ghi nhận values cho hộp thoại DatePicker_Calender
+            vào txt_dateppicker_calender
+
+            datepickerListenser = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                    // dd/mm/yyyy
+                    String date = day+"/"+(month+1)+"/"+year;
+                    txt_datepicker_calender.setText(date);
+                }
+            };
+        }
+
+
+        // ánh xạ id
+        public void init(){
+            txt_datepicker_calender = (TextView) findViewById(R.id.txt_datepickerDialog_calender);
+        }
+
+        // showToast
+        public void showToast(String msg){
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+        }
+    }

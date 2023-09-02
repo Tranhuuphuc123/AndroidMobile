@@ -1,0 +1,70 @@
+**************************CẤU HÌNH ACTIVITY **********************
+>>> KHÁI NIỆM:
+ - ở BÀI07_ Tương tác activity với layout thì ta học đc cách:
+  + tương tác code layout với Mainactivity.java để ánh xạ code qua lại
+  + Thay đổi mạc định layout: activity_Main.xml thành một layout khác
+
+ ===> tuy nhiên ở bài này ta sẽ nâng cao lên, ta sẽ tiến hành thiết lập một file java riêng để chạy đc cái layout 
+ của mình và cấu hình nó trong file cấu hình Manifest/Androidmanifest.xml
+
+
+******************************************************************************************
+>>>> TIẾN HÀNH:
+ ## BƯỚC 01: ĐẦU TIÊN
+  -> Đặt giả xử như bài thay đổi cấu hình layout, ta tạo ra một file cấu hình layout mới tên activity_android1.xml
+  thay vì vào file Mainactivity.java rồi thay đổi nội dung:
+   
+               setContentView(R.layout.acitivity_android1);
+
+               --> để nó chạy đc cái layout mới
+
+    ==> ta sẽ không làm dậy mà tiến hành tạo hẳn một file java mới tên là Androidactivity.java để thiết lập
+    layout activity_android1.xml luôn như sau:
+      
+                   
+              package com.example.ontap;
+
+              import android.app.Activity;
+              import android.os.Bundle;
+
+              public class AndroidActivity extends Activity {
+                  @Override
+                  protected void onCreate(Bundle savedInstanceState) {
+                      super.onCreate(savedInstanceState);
+                      // dẫn trực tiếp file layout mới vào file java mới luôn
+                      setContentView(R.layout.acitivity_android1);
+                  }
+              }
+
+  ## Bước 02: cấu hình manifest:
+   -> trong file cấu hình thiết lặp cho các java chạy các layout ta tiến hành thêm mới activity
+   -> mỗi cặp <activity></activity> tương ứng cho một file activity.java ở folder java
+   -> cặp thuộc tính <intent-filter>: đc đặt ở đâu thì nó sẽ đc xem xét là ưu tiên cho activity đó chạy
+   đầu tiên khi ứng dụng đc build
+
+      **code mâu:
+                  <manifest>
+                     ......
+                   <application>  
+                     // cấu hình cho Mainactivity.java
+                      <activity
+                          android:name=".MainActivity"
+                          android:label="@string/app_name"
+                          android:exported="true">
+                      </activity>
+
+                      <!--Cấu hình cho các Androidactivity.java-->
+                      <activity
+                          android:name=".AndroidActivity"
+                          android:label="@string/app_name"
+                          android:exported="true">
+
+                          // cặp <intent-filter> thiết lặp ứng dụng chạy đầu tiên
+                          <intent-filter>
+                              <action android:name="android.intent.action.MAIN" />
+                              <category android:name="android.intent.category.LAUNCHER" />
+                          </intent-filter>
+                      </activity>
+                   </application>
+
+                 </manifest>

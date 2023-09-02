@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AlertDialog" parent="Theme.Material3.DayNight.NoActionBar">
+       <!--tùy chỉnh màu gốc-->
+        <item name="colorPrimary">@color/grey</item>
+    </style>
+
+    <style name="btn_mau">
+        <item name = "android:layout_width">match_parent</item>
+        <item name ="android:layout_height">wrap_content</item>
+        <item name ="android:textSize">20dp</item>
+        <item name ="android:textColor">@color/black</item>
+        <item name ="android:background">@drawable/rectangle</item>
+        <item name ="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="Theme.AlertDialog" parent="Base.Theme.AlertDialog" />
+</resources>

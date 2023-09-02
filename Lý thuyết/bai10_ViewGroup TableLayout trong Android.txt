@@ -1,0 +1,113 @@
+*****************VIEWGROUP: TABLELAYOUT TRONG ANDROID*******************
+>>>>KHÁI NIỆM:
+ - TableLayout là một lớp con của ViewGroup trong Android, được sử dụng để tạo và quản lý một bảng dữ liệu 
+ được tổ chức dưới dạng các hàng và cột. Nó sắp xếp các view con thành các ô trong bảng, tạo thành một giao 
+ diện dạng lưới.
+ - Do tổ chức theo kiểu dạng table lưới nên mặc nhiên nó có orientation là : horizontal(hàng ngang)
+ ==> ứng dung:
+  + Thường đc vận dụng để tạo các báo cáo, văn bản các table kiểu liệt kê
+ ==> nó có thể sử dụng các thuộc tính của view: padding, text, margin, gravity.... một cách bình thường
+ ==> Không sử dụng đc các thuộc tính của RelativeLayout
+ ====> TÓM LẠI:
+  - tableLayout là một viewgroup nên nó có các tính chất thuộc tính của view tuy nhiên có thêm một số 
+  thuộc tính đb: android:stretchColumns, android:collapseColumns...
+
+
+
+**********************************************************************************************************
+ >>>>>CÁC THUỘC TÍNH QUAN TRỌNG CỦA TABLELAYOUT
+   .. Ngoài các thuộc tính của view thì nó có thêm một số thuộc tính đặc trưng khác như sau:
+
+  1/ android:stretchColumns
+   -> Xác định các cột sẽ căng ra(dãn ra) để lấp đầy không gian còn trống. Các cột được xác định bằng số thứ tự, 
+   bắt đầu từ 0
+
+       vd:
+       android:stretchColumns="0, 2" 
+       => sẽ làm căng các cột thứ 0 và thứ 2 để lấp đầy không gian còn trống.
+
+   -> có thể dùng dâu '*' để nó hiểu là căng đều hết các tablerow 
+       vd:
+          android:stretchColumns="*"
+
+  2/ android:layout_weight/ android:weightSum:
+   -> cặp thuộc tính xác định tổng trọng số phân bổ các trọng số theo ý người code để phân chia phạm vi
+   bố cục đã đc học ở bài 03_Linearlayout về phân chia bố cục đều
+
+   **Note: lưu ý khi sử dụng thuộc tính này thì do tablelayout là dang lưới nên xem như kiểu bố cục 
+   horizontal(sắp xếp hàng ngang)
+   --> nên cần xét android:layout_width="0dp"
+   ==> việc xét như thế sẽ giúp các tablerow đều nhau tuyệt đối
+
+
+  3/ android:collapseColumns:
+   -> Xác định các cột sẽ bị ẩn đi. Các cột được xác định bằng số thứ tự, bắt đầu từ 0
+   => nghĩa là giống mảng nó sẽ lấy cột đầu tiên là 0 -> dần tới các cột khác
+     vd: có 3 cột muốn ẩn đi cột thứ 2 thì viết như sau:
+             android:collapseColumns = "1"
+             ....
+
+  4/ android:layout_span:
+   -> Xác định số cột mà một view con cụ thể sẽ chiếm. 
+       Ví dụ: 
+          android:layout_span="2" sẽ làm cho view con chiếm 2 cột.  
+
+
+
+         ***code minh họa***
+          <?xml version="1.0" encoding="utf-8"?>
+          <TableLayout
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              // chỉ định cái phần tử cụ thể mún ẩn đi
+              android:collapseColumns="">
+
+              <!--khai báo các tablerow đễ định hình các hàng theo dạng table-->
+              <TableRow
+                  android:background="@color/green">
+                  <!--các Textview khi khai báo với Tablerow thì không
+                    cần khai báo width với height-->
+                  <TextView
+                      android:text="Name"
+                      // đưa width về 0dp để canh đều các view tablerow
+                      android:layout_width="0dp"
+                      android:textColor="@color/black"
+                      android:textStyle="bold"
+                      // phân chia trọng sổ bố cục chia đều sắp xếp hoặc có thể dùng  android:stretchColumns="*"
+                      android:layout_weight="1"/>
+
+                  <TextView
+                      android:text="Address"
+                      android:layout_width="0dp"
+                      android:textColor="@color/black"
+                      android:textStyle="bold"
+                      android:layout_weight="1"/>
+
+                  <TextView
+                      android:text="Phone"
+                      android:layout_width="0dp"
+                      android:textColor="@color/black"
+                      android:textStyle="bold"
+                      android:layout_weight="1"/>
+              </TableRow>
+
+              <!--Tablerow thứ 2: làm dòng thông tin-->
+              <TableRow>
+                  <!--các Textview khi khai báo với Tablerow thì không
+                    cần khai báo width với height-->
+                  <TextView
+                      android:text="Phúc"
+                      android:layout_width="0dp"
+                      android:layout_weight="1"/>
+                  <TextView
+                      android:text="Cần Thơ"
+                      android:layout_width="0dp"
+                      android:layout_weight="1"/>
+
+                  <TextView
+                      android:text="0939052119"
+                      android:layout_width="0dp"
+                      android:layout_weight="1"/>
+              </TableRow>
+          </TableLayout>

@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Asignment1" parent="Theme.Material3.DayNight.NoActionBar">
+        <!--thiết lặp màu chuẩn-->
+        <item name="colorPrimary">@color/green</item>
+    </style>
+
+    <style name="Theme.Asignment1" parent="Base.Theme.Asignment1" />
+</resources>

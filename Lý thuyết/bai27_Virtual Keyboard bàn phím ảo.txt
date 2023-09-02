@@ -1,0 +1,68 @@
+************************TIỀM HIỂU BÀN PHÍM MÁY ẢO VIRTUAL KEYBOARD**************************
+>>>>KHÁI NIỆM:
+ - Là một bàn phím được hiển thị trên màn hình cảm ứng của thiết bị di động, cho phép người dùng nhập
+ liệu bằng cách chạm vào các phím trên màn hình thay vì sử dụng bàn phím vật lý.
+
+
+*****************************************************************************************************
+>>>> THUỘC TÍNH CỦA VITUARL KEYBOARD
+ ## Sử dụng thuộc tính  android:windowSoftInputMode để thiết lặp => có các value tương ứng
+
+  <=> thiết lặp trong tập tin Manifest nha
+
+  + stateAlwaysVisibale: thiết lặp khởi chạy bàn phím ảo
+  + ajustRezie: tiết lặp bàn phím ảo khoog che mất nội dung khi mở bàn phím ảo
+   -> nghĩa là khi bật bàn phím ảo thg nó sẽ lấn che luôn nội dung chỗ nó hiện
+   với tính năng này nó sẽ giúp co giãn nội dung # cạnh nó mà không che mất nó đi
+      
+      vd:
+         android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+
+  <=> tươg ứng chức năng trên nếu thiết lặp trog tập tin Activity.class
+
+   + WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE: khởi chạy máy ảo
+   + WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE: thiết lặp co giản máy ảo chánh lấn nd khác
+
+     vd:
+       getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE
+       |WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+ 
+
+
+
+*******************************************************************************************************
+>>>> TIẾN HÀNH KHỞI TẠO VÀ SỬ DỤNG MỘT VIRTUAL KEYBOARD
+   >> cách 01: Khởi tạo bàn phím ảo trong tập tin Manifest
+
+    -> vào Manifest.xml:
+      thêm thuộc tính  android:windowSoftInputMode="stateAlwaysVisible"
+
+       vd:
+           <activity
+              android:name=".VirtualKeyboardActivity"
+              android:exported="true"
+              android:windowSoftInputMode="stateAlwaysVisible">
+              <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+           </activity> 
+
+      
+    >> cách 02: Khởi tạo bàn phím ảo trong tập tin java Activity
+      -> vào MainActivity.java: trong method inCreate() ta thêm đoạn code sau
+
+          getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+
+          vd:
+              public void OnCreate(){
+                   getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+              }
+        
+ ===> dường như các phiên bản mới android về sau tính năng bàn phím ảo dc thiết lặp sẵn có và không còn
+ phụ thuộc vào câu lệnh trên tuy nhiên học để biết thêm cho chắc lỡ không mở đc thì dùng lệnh code trên.
+
+
+********************************************************************************************************
+>>>>CODE THỰC NGHIỆM:
+=> xem phần thực hành bên mục Android_mobile/SourceCode/VirtualKeyboardActivity.java/.xml

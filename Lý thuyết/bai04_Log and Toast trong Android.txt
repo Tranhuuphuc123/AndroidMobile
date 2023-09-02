@@ -1,0 +1,158 @@
+*******************LOG AND TOAST TRONG ANDROID******************
+>>>>KHÁI NIỆM:
+ - Log và toast là hai khái niệm trong lập trình Android để hiển thị thông tin hoặc cảnh báo
+ cho người phát triển và người dùng.
+
+===============================
+ ## Log:
+  - Trong lập trình Android, log là một cơ chế để ghi lại thông tin, cảnh báo hoặc lỗi trong 
+  quá trình thực thi ứng dụng. Log được sử dụng để ghi các thông tin hữu ích như giá trị của
+  các biến, các hành động của ứng dụng, thông tin debug, v.v.
+
+  - Log được ghi vào Logcat, một công cụ của Android Studio cho phép bạn theo dõi và hiển thị 
+  các thông báo log. Logcat giúp người phát triển tìm hiểu và phân tích lỗi hoặc sự cố trong quá
+  trình chạy ứng dụng.
+
+  - Cấu trúc thuộc tính Log:
+     
+        Lod.d(tag, <tên biến>)
+         > trong đó:
+           + tag: tg ứng như một key do người dùng đặt để sử dụng tiềm kiếm
+           + <tên biến>: truyền biến cần ghi log
+
+         > vd:
+            string str ="hello";
+            Log.d("key1", str);
+
+================================
+ ## Toast:
+  - Toast là một thông báo nhỏ xuất hiện trên màn hình điện thoại Android trong một thời gian ngắn,
+  thường chỉ vài giây, sau đó tự động biến mất. Nó thường được sử dụng để thông báo cho người dùng 
+  về các hoạt động hoặc trạng thái của ứng dụng mà không cần họ tương tác trực tiếp.
+
+  - Toast thường được sử dụng để cung cấp các thông báo ngắn gọn như cảnh báo, thành công, lỗi,
+  hoặc thông tin đơn giản.
+
+  - Cấu trúc thuộc tính:
+      Toast.makeText(Context context, charSequence text, int duration)
+       > trong đó:
+        + Context: tên của activity java.this:
+           vd lấy tên DebugActivity.java
+            ~ DebugActivity.this
+
+        + charSequenceText: dẫn value vào(có thể lấy biến cóa value thiết lập trc đó)
+        + duration: hiển thị thời gian sống cho nó
+          ++ Toast.LENGTH_LONG: Thời gian dài
+          ++ Toast.LENGTH_SHORT: Thời gian ngắn
+
+       > vd:
+            Toast.makeText(DebugActivity.this,str,Toast.LENGTH_SHORT).show();
+
+            ==> lưu ý thêm thuộc tính show() mới hiển thị ra đc
+            ==> với thiết lập như vd khi build project vói layout thiết kế trc đó
+            nó sẽ hiện thị một thông tin thông báo Toast lên có nội dung của biến 
+            str ="Log and Toast" lên trong một thời gian ngắn đúng với tinh thần
+            của một thông báo
+
+
+*****************Khi nên sử dụng Log, khi nào nên dùng Toast*******************:
+ - nhìn chung cả 2 đều cảnh báo hoặc thông báo thông tin vậy khi nào dùng Toast, khi nào
+ dùng Log
+
+  ## Sử dụng log:
+    - trong quá trình phát triển ứng dụng để theo dõi các giá trị biến, quá trình thực thi, 
+    kiểm tra logic, v.v.
+    - Sử dụng log để ghi lại các lỗi, cảnh báo hoặc thông tin debug khi kiểm tra và sửa lỗi trong ứng dụng.
+
+  ## Khi nên sử dụng Toast:
+   - Sử dụng toast để thông báo cho người dùng về các sự kiện như thành công, lỗi nhỏ,
+   hoàn thành nhiệm vụ, v.v.
+   - Sử dụng toast khi bạn muốn cung cấp một thông báo ngắn gọn và tạm thời mà không cần 
+   người dùng tương tác để đóng lại thông báo.
+
+**** Tổng kết*****:
+   - Lưu ý rằng log chỉ được hiển thị và sử dụng trong quá trình phát triển và debug,
+   ==> có thể xem các log trong Logcat ở phần run build khi chạy project
+
+   - trong khi Toast được hiển thị cho người dùng cuối. Khi ứng dụng đã hoàn chỉnh và 
+   sẵn sàng để triển khai, 
+   ---> hãy đảm bảo loại bỏ các log không cần thiết để giảm dung lượng ứng dụng.
+   ===> Phần Toast sẽ hiển thị thông tin ghi Toast ở trên ứng dụng view layout cùng lúc
+
+
+
+
+
+
+************************************************************************************************************
+>>>>CODE THAM KHẢO
+--> có thể xem file DebugActivity trong project TongHop để hiểu rõ về Log and Toast
+   
+ ****MỘT LƯU Ý:
+  -> khi build chương trình thì nó sẽ chỉ hiện các thồng tin text, button, view của file layout
+  vậy trong đoạn code xử lý bên Activity java sau:
+           
+              ....
+              public class DebugActivity extends AppCompatActivity {
+
+                @Override
+                protected void onCreate(Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    setContentView(R.layout.activity_debug);
+                    String str = "Log and Toast";
+
+                    // tiến hành in ra thông tin của str trên không dùng System.out.println
+                    //==> mà dùng Log
+                    Log.d("trainingAndroid", str);
+                }
+
+             ....
+             ==> thì câu hỏi đặt ra là Log.d in ra str với tag là trainingAndroid có nội dung
+             "Log and Toast" nó sẽ hiện và xem ở đâu.
+
+         ==> để xem đc các thông tin log và Toast của các biến cụ thể là str thì trong phần hiển thị
+         run build khi chạy chương trình ấy ta chọn:
+          + Logcat
+          + tiếp tục trục mục search ta nhấn từ khóa tag:"trainingAndroid"
+          -> lúc này thông tin log và nội dung "Log and Toast" sẽ hiện ra
+          => có thể bấm vào biểu tượng filter để lưu lại cái tag: "trainingAndroid"
+          để tiện cho lần xem sao dễ tiềm kiếm hơn.
+
+
+  ****Với Toast: thì sẽ như sau:
+      vd:
+             ....
+              public class DebugActivity extends AppCompatActivity {
+
+                @Override
+                protected void onCreate(Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    setContentView(R.layout.activity_debug);
+                    String str = "Log and Toast";
+                    Toast.makeText(DebugActivity.this,str,Toast.LENGTH_LONG).show();    
+                }
+
+            
+      ****Sử dụng Toast: giải thích****
+          ==> Lưu ý: Toast sẽ hiển thị nội dung lên thằng layout trên giao diện của máy ảo
+         hay máy thật lun
+        
+        ==>cấu trúc Toast:(nói lại lần nữa)
+        *  Toast.makeText(Context context, charSequence, int duration)
+        *  > trong đó:
+            + Context: tên của activity java.this:
+                vd lấy tên DebugActivity.java
+                 ~ DebugActivity.this
+
+             + charSequenceText: dẫn value vào(có thể lấy biến cóa value thiết lập trc đó)
+             + duration: hiển thị thời gian sống cho nó
+                  ++ Toast.LENGTH_LONG: Thời gian dài
+                  ++ Toast.LENGTH_SHORT: Thời gian ngắn
+               ==> với thiết lập như vd khi build project vói layout thiết kế trc đó
+            nó sẽ hiện thị một thông tin thông báo Toast lên có nội dung của biến
+            str ="Log and Toast" lên trong một thời gian ngắn đúng với tinh thần
+            của một thông báo
+
+        ==> thêm thuộc tính show() để hiển thị ra màn hình
+        
+          

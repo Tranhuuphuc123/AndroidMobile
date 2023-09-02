@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Baitapungdung_Apploihayydep"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/anhnen">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Content"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:onClick="ShowButton"
+        android:id="@+id/btn_button"/>
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtView"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:layout_marginTop="30dp" />
+
+</LinearLayout>

@@ -1,0 +1,176 @@
+*******************TIỀM HIỂU VỀ VIEWGROUP: RELATIVElAYOUT**************************
+>>>KHÁI NIỆM:
+ - RelativeLayout là một lớp viewgroup trong Android được sử dụng để xác định vị trí và quan hệ tương đối
+ giữa các phần tử con trong giao diện người dùng. Nó cho phép bạn xác định vị trí của các phần tử dựa trên
+ quan hệ tương đối với các phần tử khác trong cùng RelativeLayout hoặc với các phần tử cha.
+ - RelativeLayout sử dụng các thuộc tính cụ thể để xác định quan hệ tương đối như
+  + android:layout_alignParentTop
+  + android:layout_alignParentLeft
+  + android:layout_below
+  + android:layout_toRightOf
+  ... và nhiều thuộc tính khác. 
+  ===> Bằng cách sử dụng những thuộc tính này, bạn có thể định vị các phần tử con dựa trên quan hệ với 
+  các phần tử khác trong RelativeLayout.
+  ***Note***
+  ==> RelativeLayout cung cấp linh hoạt và quyền kiểm soát cao về việc sắp xếp và định vị các phần tử 
+  trong giao diện người dùng. Tuy nhiên, khi sử dụng RelativeLayout, hãy chú ý rằng việc sắp xếp và quyết
+  định vị trí các phần tử có thể phức tạp hơn so với các lớp viewgroup khác như LinearLayout.
+
+
+****************************************************************************************************************
+>>>>CÁC THUỘC TÍNH CỦA VIEWGROUP: RELATIVELAYOUT
+===================================
+## Nhóm 1: đặt vị trí các view(view riêng lẻ) trong cùng một relativeLayout cha
+  vd: có nút bbutton trong cuàng một RelativeLayout
+
+ 1/ android:layout_alignParentTop="true"
+  -> Đặt phần tử con ở trên cùng của RelativeLayout.
+
+ 2/ android:layout_alignParentBottom="true"
+  ->Đặt phần tử con ở dưới cùng của RelativeLayout.
+
+ 3/ android:layout_alignParentLeft="true"
+  ->Đặt phần tử con ở bên trái của RelativeLayout.
+
+ 4/ android:layout_alignParentRight="true"
+  ->Đặt phần tử con ở bên phải của RelativeLayout.
+
+       
+   vd code:
+           
+          <RelativeLayout
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_margin="@dimen/margin"
+              android:layout_height="match_parent">
+
+              <!--khai báo một button và tùy chỉnh vị trí với relativelayout-->
+              <Button
+                  android:layout_width="wrap_content"
+                  android:text="@string/name_button"
+                  android:padding="@dimen/padding"
+
+                  // tùy chỉnh các vị trí mún để tự thay thế
+                  android:layout_alignTop="true"
+                  android:llayout_alignBottom="true"
+                  .....
+
+                  android:layout_height="wrap_content"/> 
+
+          </RelativeLayout>
+        
+
+
+================================
+## Nhóm 2: đặt vị trí view giữa các view(nhiều view) khác nhau trong cùng một RelativeLayout
+ vd:
+     => có 2 nút button trở lên thì vấn đề xảy ra ở Viewgroup RelativeLayout 
+    là nó sẽ bị trồng lên nhau-> nên  các thuộc tính nhóm 2 sẽ giải quyết
+    điều đó
+    => lưu ý với cách dùng thuộc tính nhóm 2 này ta cần thiết lập id cho các button
+    để khi triển khai các thuộc tính dưới thì sẽ gán cái id của các button đó
+    như vậy nó sẽ hiểu là cách cái button có id đó
+           
+              vd:
+                     // button thứ nhất
+                       <button>
+                       ...
+                       adnroid:id="@+id/btn1"
+                       </button>
+                     
+                     // buton thứ 2 đặt nằm bên trái button 1
+                       <button>
+                       ...
+                        android:layout_toEndOf="@+id/btn1"
+                       </button
+
+
+ 5/ android:layout_above: 
+  ->Đặt phần tử con bên trên một phần tử khác trong RelativeLayout.
+
+ 6/ android:layout_below: 
+  ->Đặt phần tử con bên dưới một phần tử khác trong RelativeLayout.
+
+ 7/ android:layout_toLeftOf/toStartOf:
+ ->Đặt phần tử con bên trái một phần tử khác trong RelativeLayout.
+
+ 8/ android:layout_toRightOf/toEndOf: 
+  ->Đặt phần tử con bên phải một phần tử khác trong RelativeLayout.
+
+      vd code:
+              <?xml version="1.0" encoding="utf-8"?>
+              <RelativeLayout
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_margin="@dimen/margin"
+                  android:layout_height="match_parent">
+
+                  <!--khai báo một button và tùy chỉnh vị trí với relativelayout-->
+                  <Button
+                  // thiết lặp id nhân dạng
+                      android:id="@+id/bt_1"
+
+                      android:layout_width="wrap_content"
+                      android:text="@string/name_button"
+                      android:padding="@dimen/padding"
+                      android:layout_height="wrap_content"/>
+
+                  <Button
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:padding="@dimen/padding"
+
+                      // sử dụng thuộc tính trong nhóm 2 để tách các view button # tránh trồng lên nhau như cũ
+                      android:layout_toRightOf="@+id/bt_1"
+                      android:text="@string/name_button2" />
+
+              </RelativeLayout>
+
+
+====================================
+## Nhóm 03:??? 
+ 9/ android:layout_alignTop:
+  ->Đặt phần tử con có phần trên khớp với phần trên của một phần tử khác trong RelativeLayout.
+
+ 10/ android:layout_alignBottom:
+  ->Đặt phần tử con có phần dưới khớp với phần dưới của một phần tử khác trong RelativeLayout.
+
+ 11/ android:layout_alignLeft:
+  ->Đặt phần tử con có phần trái khớp với phần trái của một phần tử khác trong RelativeLayout.
+
+ 12/ android:layout_alignRight:
+  ->Đặt phần tử con có phần phải khớp với phần phải của một phần tử khác trong RelativeLayout.
+
+      vd code:
+        
+
+=========================================
+## Nhóm 04: tùy chỉnh vị trí căn giữa
+ 13/ android:layout_centerInParent 
+  -> đặt giữa Relativelayout-> giữa trung tâm luôn
+
+ 14/ adroid: layout_centerHorizontal
+  -> Đặt giữ theo vị trí chiều ngang
+
+ 15/ android: layout_centerVertical:
+  -> đặt giữa theo chiều dọc
+
+     vd code:
+        android:centeInparent="true"
+        ....
+
+
+  .... còn rất nhiều sẽ đc tiềm hiểu khi thực nghiệm
+
+  ****Note****\
+  => Lưu ts câu hỏi đặt ra là các thuộc tính padding, text, margin.. như bên LinearLayout
+  thì bền RelativeLayout có dùng đc không
+   câu trả lời là : có
+   -> RelativeLayout như một viewgroup có thêm các thuộc tính bổ trợ về trùy chỉnh vị trí đặt thẻ button, text
+   mà thui.
+
+
+
+    ****ví dụ code: minh họa:
+      ==> xem bên phần thực hành ở bên sourceCode
+

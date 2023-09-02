@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/margin"
+    android:layout_height="match_parent">
+
+    <!--khai báo một button và tùy chỉnh vị trí với relativelayout-->
+    <Button
+        android:id="@+id/bt_1"
+        android:layout_width="wrap_content"
+        android:text="@string/name_button1"
+        android:padding="@dimen/padding"
+        android:layout_height="wrap_content"/>
+
+    <!--Button 2 bị trồng lân với 1 sử dụng tt nhóm 2 để tách biệt
+    cho nó nằm bên phải của button 1-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:layout_toEndOf="@+id/bt_1"
+        android:text="@string/name_button2" />
+
+    <!--thêm button nữa mún tách ra có thể dùng tt nhóm 1 lại tư duy nhạy
+    bén kết hợp liên tục-->
+    <Button
+        android:id="@+id/bt_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:layout_alignParentBottom="true"
+        android:text="@string/name_button3" />
+
+    <!--tạo buttn thứ 4 cho nó nằm trên button 3 sử dụng tt nhóm2-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:layout_above="@+id/bt_3"
+        android:text="@string/name_button4" />
+
+    <!--Tạo button thư 5 nằm bên trái ở trên sử dụng tt nhóm 1 bt-->
+    <Button
+        android:id="@+id/bt_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:layout_alignParentEnd="true"
+        android:text="@string/name_button5" />
+
+    <!--Tạo nut button thứ 06 nằm ở dưới của button5 sủ dụng thuộc tính nhóm 2-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/bt_5"
+        android:text="@string/name_button6" />
+
+    <!-- tạo button thứ 6 cho nằm giữa trung tâm sd thuộc tính nhóm 4-->
+    <Button
+        android:id="@+id/bt_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:layout_centerInParent="true"
+        android:text="@string/name_button7" />
+
+    <!--tạo button thứ 8 cho nằm bên phải của btton 7 dùng tt nhóm 2-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding"
+        android:layout_centerInParent="true"
+        android:layout_toEndOf="@+id/bt_7"
+        android:text="Click8" />
+
+
+
+</RelativeLayout>

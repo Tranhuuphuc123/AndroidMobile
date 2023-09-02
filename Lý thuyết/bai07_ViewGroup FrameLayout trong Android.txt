@@ -1,0 +1,51 @@
+**************************TIỀ HIỂU VỀ VIEWGROUP: FRAMELAYOUT***********************
+>>KHÁI NIỆM:
+ - Framelayout là một lớp trong Android, nó là một lớp con của lớp ViewGroup. Nó cho phép xếp 
+ chồng nhiều view lên nhau trong cùng một vị trí trên màn hình.
+ ==> nói về tính năng của Viewgroup này thì nó khá hạn chế và đơn giản cho nên không được
+ dùng nhiều trong thiết kế
+ ==> tuy nhiên có một số tính năng mà nó lại phát huy:
+  + Nó phù hợp để xây dựng giao diện có 1 control duy nhất
+  + nếu có nhiều control, thì các control nó nằm đè trồng lên nhau
+
+ ---> FrameLayout không có các thuộc tính như RelativeLayout để tách các lơp chồng
+ ---> chỉ có thể sử dụng layout_gravity, layout_margin để tách, căn chỉnh vị trí nó ra thui....
+
+ >>> CÁC THUỘC TÍNH
+  Nó có thể dùng chung các thuộc tính của lớp view: padding, text, margin, gravity.....
+
+ ## code minh họa:
+
+              <?xml version="1.0" encoding="utf-8"?>
+              <FrameLayout
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_margin="@dimen/margin"
+                  android:layout_height="match_parent">
+
+                  <Button
+                      android:layout_width="wrap_content"
+                      android:text="@string/app_name"
+                      android:padding="@dimen/padding"
+                      android:layout_height="wrap_content"/>
+
+
+                  <!--với framelayout nếu thêm một button vd như sau: nó sẽ bị đè lên-->
+                  <Button
+                      android:layout_width="200dp"
+                      android:text="@string/app_name2"
+                      android:padding="@dimen/padding"
+
+                      // rát hạn chế để có thuộc tính tách các view ra như RelativeLayout
+                      // nên cần kết hợp thủ công margin rồi gravity như thuộc tính view bình thường
+                      android:gravity="center"
+                      android:layout_marginTop="@dimen/margin_top"
+                      android:layout_height="200dp"/>
+
+              </FrameLayout>`
+
+
+ =======> tóm lại Framelyout: khá hạn chế và ít thuộc tính nó sẽ thg ít đc sử dụng để xây dựng giao diện
+ ======> các view dễ bj trồng lẫn lên nhau và ít thuộc tính bổ trợ
+ ======> nhưng nó có những lợi thế trong một số trường hợp xd giao diện mang tính đơn giản
+ ta sẽ thực nghiệm trong quá trình lâu dài va tự đúc kết

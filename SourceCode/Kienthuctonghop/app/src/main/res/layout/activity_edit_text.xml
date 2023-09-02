@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/username"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:hint="username"
+        android:inputType=""
+        android:textColor="@color/red"
+        android:enabled="true"
+        android:imeOptions="actionSearch"
+        android:maxLength="1000"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:textColor="@color/red"
+        android:enabled="true"
+        android:imeOptions="actionSearch"
+        android:maxLength="100"/>
+
+</LinearLayout>

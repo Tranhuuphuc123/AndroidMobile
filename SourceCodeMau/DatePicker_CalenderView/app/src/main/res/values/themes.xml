@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.DatePicker" parent="Theme.Material3.DayNight.NoActionBar">
+        <!--tùy chỉnh màu gốc-->
+        <item name="colorPrimary">@color/grey</item>
+
+    </style>
+
+    <style name="Theme.DatePicker" parent="Base.Theme.DatePicker" />
+</resources>

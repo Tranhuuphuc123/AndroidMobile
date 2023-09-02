@@ -1,0 +1,104 @@
+******************TIỀM HIỂU VỀ EDITTEXT TRONG ANDROID  FORM WIDGET***********************
+>>>>>KHÁI NIỆM:
+ - EditText trong Android là một thành phần giao diện người dùng dùng để chấp nhận và hiển thị
+ văn bản từ người dùng. Nó cho phép người dùng nhập dữ liệu vào ứng dụng của bạn, chẳng hạn như 
+ nhập tên, mật khẩu, hoặc bất kỳ thông tin văn bản nào khác.
+
+ - EditText được kế thừa từ TextView, vì vậy nó chia sẻ nhiều thuộc tính và phương thức giống
+ như TextView, nhưng có thêm khả năng chỉnh sửa nội dung.
+
+
+
+
+***************************************************************************
+>>>>>CÁC THUỘC TÍNH 
+ ##1/ android:inputType:
+  => Xác định kiểu dữ liệu được nhập vào (ví dụ: số, văn bản, email, mật khẩu, ...).
+   + number
+   + text
+   + email
+   + numberPassword: chỉ nhập mk là số
+   + textPassword: nhập mk dưới dạng văn bản
+   + NumberDecimal: nhập số thập phân
+   + DateTime: ngày giờ
+   ....
+
+ ##2/ android:hint:
+  => Đặt văn bản gợi ý để hiển thị khi EditText rỗng.
+
+ ##3/ android:text: 
+  => Thiết lập văn bản mặc định của EditText.
+  => thiết lập cái văn bản của EditText khi vừa mở trình trình duyệt
+
+ ##4/ android:maxLength: 
+  => Giới hạn số lượng ký tự có thể nhập vào EditText.
+
+ ##5/ android:imeOptions:
+  => Xác định các tùy chọn bàn phím ảo khi chỉnh sửa văn bản (ví dụ: Done, Go, Search, ...).
+
+ ##6/ android:singleLine: 
+  => Để chỉ định rằng EditText chỉ nên chứa một dòng duy nhất.
+
+ ##7/ android:password: 
+  => Để ẩn văn bản khi người dùng nhập vào (được sử dụng cho mật khẩu).
+  => có thể dùng android:InputType="textPassword/numberPassword" để thay thế đều đúng
+  => thuộc tính của android:Password
+    + true
+    + false
+
+ ##8/ android:editable (hay android:enabled):
+  => Để cho phép hoặc vô hiệu hóa việc chỉnh sửa trên EditText.
+  => true: cho phép, false không cho
+   vd: android:enabled="true"
+
+ ##9/ android:textColor: 
+  => Để thiết lập màu chữ của EditText.
+
+##10/ android:textSize: 
+ => Để thiết lập kích thước chữ của EditText.
+
+ .... có thể dùng chung nhiểu thuộc tính cảu view and TextView
+
+
+
+
+
+*********************************************************************************************
+>>>CODE MINH HỌA:
+
+       <?xml version="1.0" encoding="utf-8"?>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/username"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:hint="username"
+                android:inputType=""
+                android:textColor="@color/red"
+                android:enabled="true"
+                android:imeOptions="actionSearch"
+                android:maxLength="1000"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/password"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:textColor="@color/red"
+                android:enabled="true"
+                android:imeOptions="actionSearch"
+                android:maxLength="100"/>
+
+        </LinearLayout> 

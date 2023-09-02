@@ -1,0 +1,152 @@
+**********************TÍNH NĂNG VIEWGROUP MỚI NHẤT CỦA ANDROID(CONTRAINTLAYOUT)*********************
+>>>>>KHÁI NIỆM
+ - Trong Android, ConstraintLayout là một loại Layout (bố cục) mạnh mẽ giúp bạn xây dựng giao diện người
+ dùng một cách linh hoạt và hiệu quả. Nó cho phép bạn xác định các ràng buộc giữa các phần tử trong giao
+ diện để định vị chúng một cách chính xác trên màn hình.
+
+ ==> kể từ các bản android mạnh mẽ về sau ContraintLayout dần đc thay thế cho cách sắp xếp với các layout
+ cũ nhất là Relative layout trong việc địn vị trí trong cùng một layout
+
+ ===> cũng như Relative layout thì ConstrantLayout cũng có các thuộc tính cố định vị trí rất bá
+
+
+
+
+********************************************************************************
+>>>>>CÁC THUỘC TÍNH 
+  ##01: layout_constraintLeft_toLeftOf / layout_constraintRight_toRightOf:
+
+      Ví dụ: 
+           layout_constraintLeft_toLeftOf="@+id/<name_id>"
+           layout_constraintLeft_toLeftOf="parent"
+
+    ===> Giải thích: Điều này đặt vị trí bên trái của phần tử hiện tại (View A) sao cho nó trùng với vị trí 
+    bên trái của phần tử khác (View B), được đặt bởi ID của @+id/<name_id>. tức là 
+    xếp sao mà viewA nó nằm bên trái ViewB thông qua id
+
+    ===> còn Parent nghĩa là nó sẽ nằm bên trái kế cận phần bên trái của thẻ cha Parent chứa nó.. cụ thể là 
+    ContraintLayout
+    ~ tương tự các th cho right
+
+ ========================
+ ##02 layout_constraintTop_toTopOf / layout_constraintBottom_toBottomOf:
+   
+   Ví dụ: 
+         layout_constraintTop_toTopOf="parent"
+
+  ==> Giải thích: Điều này đặt vị trí trên cùng của View A trùng với vị trí trên cùng của phần tử cha (parent).
+  (ở đây là nằm trên cùng gần với vị trí top của Constraintlayout) ~ tương tự với bottom
+
+
+===================================
+ ##03 layout_constraintWidth_percent / layout_constraintHeight_percent:
+
+   Ví dụ: l
+           ayout_constraintWidth_percent="0.5"
+   
+   ==>Giải thích: Điều này xác định chiều rộng của View A là 50% chiều rộng của ConstraintLayout.
+
+ 
+======================================= 
+ ##04 layout_constraintDimensionRatio:
+
+    Ví dụ: 
+          layout_constraintDimensionRatio="16:9"
+
+   ===> Giải thích: Điều này thiết lập tỷ lệ giữa chiều rộng và chiều cao của View A thành 16:9.
+
+
+=========================================
+ ##05 layout_constraintHorizontal_bias / layout_constraintVertical_bias:
+
+       Ví dụ:
+           layout_constraintHorizontal_bias="0.2"
+  
+    ===> Giải thích: Điều này đặt View A sao cho nó nằm ở một vị trí ngang có tỷ lệ 0.2 so với phần tử cha.
+    0.0 là trái cùng, 1.0 là phải cùng.=> đúng hơn là nó chiếm 20% tổng số tính từ trái sang phải theo chiều ngang
+    của thẻ cha chứa nó ~ tượng cho layout_constraintVertical_bias:
+
+
+
+=========================================
+ ##06 layout_constraintGuide_percent:
+
+      Ví dụ: 
+       layout_constraintGuide_percent="0.3"
+
+  ====> Giải thích: Điều này tạo một k/c ngang chiếm 30% tính từ vị trí theo chiều dọc tính từ ConstraintLayout.
+
+  
+===========================================  
+  ##07 layout_constraintCircle / layout_constraintCircleRadius / layout_constraintCircleAngle:
+
+    Ví dụ: 
+        layout_constraintCircle="@+id/center"
+        layout_constraintCircleRadius="100dp"
+        layout_constraintCircleAngle="45"
+
+   ==> Giải thích: Điều này đặt View A sao cho nó nằm trên một vòng tròn có tâm là View B
+   (có ID là center), bán kính là 100dp và góc là 45 độ.
+
+
+============================================================================================================
+****TỔNG KẾT*********:
+ -Nhớ rằng, ConstraintLayout cho phép bạn kết hợp nhiều thuộc tính cùng một lúc để xác định vị
+trí và kích thước của các phần tử trong giao diện một cách tùy chỉnh và linh hoạt.
+ => có thể dùng parent để so với vị trị xác định ở hướng cùng với hướng của thẻ cha Parent
+ => có thể dùng @+id/<name_id> để xác định vị trí thiết lặp so với các view có <name_id>  chỉ định
+ =>  có thể dùng phần trăm để tính vị trí:
+    vd:
+         layout_constraintHorizontal_bias="0.2"
+============================================================================================================         
+
+
+
+
+
+
+******************************************************************************
+>>>>CODE MINH HỌA
+
+          <?xml version="1.0" encoding="utf-8"?>
+
+          <!--thiết kế tạo giao diện Liên kết Contact-->
+          <androidx.constraintlayout.widget.ConstraintLayout
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".MainActivity">
+
+             <ImageView
+                 android:layout_width="251dp"
+                 android:layout_height="318dp"
+                 android:id="@+id/img_aptech"
+                 android:layout_marginEnd="8dp"
+                 android:layout_marginStart="8dp"
+                 android:layout_marginTop="100dp"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintHorizontal_bias="0.504"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toTopOf="parent"
+                 app:srcCompat="@drawable/cusc_logo"/>
+
+             <TextView
+                 android:layout_width="236dp"
+                 android:layout_height="47dp"
+                 android:layout_marginStart="8dp"
+                 android:layout_marginTop="8dp"
+                 android:layout_marginEnd="8dp"
+                 android:layout_marginBottom="8dp"
+                 android:gravity="center"
+                 android:text="Click on the menu on Start"
+                 android:textSize="20dp"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintHorizontal_bias="0.553"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toBottomOf="@+id/img_aptech"
+                 app:layout_constraintVertical_bias="0.61" />
+
+          </androidx.constraintlayout.widget.ConstraintLayout>

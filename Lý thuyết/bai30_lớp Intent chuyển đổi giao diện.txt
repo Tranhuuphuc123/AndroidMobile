@@ -1,0 +1,35 @@
+******************TIỀM HIỂU VỀ CÁC CÁCH CHUYỂN ĐỔI GIAO DIỆN TRONG ANDROID******************************
+>>>>>KHÁI NIỆM
+ - Intent được xem là bộ máy truyền thông điệp giữa các thành phần trong 
+ một ứng dụng. hoặc giữa các ứng dụng với nhau
+ -> lớp Intent có các ứng dụng cụ thể:
+  + TRuyền nhận thông điệp đến các Activity hay Service
+  + TRuyền các gói xử lý đến các thành phần ứng dụng
+  + kích hoạt Activity hay Service
+
+ ===> tóm lại lớp Intent là một lớp xử chuyển đổi giao diện giữa các 
+ layout, truyền nhận dữ liệu xử lý giữa các Activity, Service...
+
+****************************************************************************
+>>>>KHỞI TẠO MỘT INTENT
+ - Khởi tạo thuộc tính Intent
+
+    Intent <name> = new Intent(<Activity.this>, Activity.class)
+    startActivity(<name>)
+
+    + trong đó:
+      ++ <name>: tên intent có thể đặt tuuyf ý
+      ++ <Activity.this>: lớp class Activity hiện  tại
+      ++ <Activity.class>: class Activity sẽ thay thế lớp hiện tại
+      ++ startActivity(<name>): thực thi chuyển đổi giao diện với tên
+      intent vừa khởi tạo.
+
+
+
+****************************************************************************
+>>>>>THUỘC TÍNH
+
+
+
+*****************************************************************************
+>>>>>

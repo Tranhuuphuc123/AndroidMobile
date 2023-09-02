@@ -1,0 +1,108 @@
+***********************XỬ LÝ SỤ KIỆN VỚI VARIABLE****************************
+>>>kHÁI NIỆM:
+ - Listener là variable (biến) là một biến được sử dụng để lưu trữ một đối tượng lắng nghe sự kiện trong Android.
+ Đối tượng lắng nghe này sẽ xử lý các sự kiện khi chúng xảy ra. Listener variables thường được sử dụng để đăng ký 
+ lắng nghe sự kiện cho các thành phần như Button, TextView, ListView, RecyclerView, v.v.
+
+==> Khi một sự kiện xảy ra, Listener variable sẽ gọi các phương thức xử lý sự kiện mà nó đang giữ để thực hiện 
+các hành động liên quan đến sự kiện đó.
+
+*****NOTE*****
+==============>tóm lại:
+    + cách thức này là xử lý sự kiện với method OnclickListener, tuy nhiên ta sẽ dùng cách thức 
+    đặt biến cho OnclickListener đó và override method Onclick  
+             
+            view.OnclickListener <tên method> = new view.OnclickListener(){
+               @override
+                 public void Onclick(View v){
+                     .. xử lý thuật toán...
+                 }
+            }
+
+
+    + sau đó tiếp theo thì sẽ gán biến <tên method> cừa đặt cho view.OnclickListener vào các button(đã lk id)
+
+            btn1.setOnclickListener(<tên method>)
+
+
+   ===> như vậy thì đây là một cách xử lý sự kiện ngay trong Activity (cụ thể là ngay trong method OnCreate
+   mà không cần tạo ra method listener mới), tuy nhiên thay vì lấy proberties là các đại tên button.setOnListener
+   thì ta sẽ biến method OnclickListener theo cách khởi tạo đặt biến và gán biến đó sau cho button.setOnclickListenr
+   sau..
+   ==> đối với  variable thì không cần implement View.OnclickListener()
+
+
+
+
+
+**********************************************************************************************************************
+>>>>> TRIỂN KHAI CODE
+ ## Bước 01:
+   => layout: giao diện tạo 5 button (5 id) với các nd khi nhấn sẽ hiển thị tương tứng
+
+ ==================  
+ ## Bước 02:
+   => code xử lý Activity kèm chú thích
+
+     
+
+                package com.example.kienthuctonghopactivity;
+
+                import androidx.appcompat.app.AppCompatActivity;
+
+                import android.os.Bundle;
+                import android.view.View;
+                import android.widget.Button;
+                import android.widget.TextView;
+
+                /*xử lý theo kiểu sự kiện đặt biến Variable listener*/
+                public class VariableListenerActivity extends AppCompatActivity  {
+                   private TextView txtView;
+                   private Button btn1, btn2, btn3, btn4, btn5;
+
+                    @Override
+                    protected void onCreate(Bundle savedInstanceState) {
+                        super.onCreate(savedInstanceState);
+                        setContentView(R.layout.activity_variable_listener);
+
+                        init();
+
+                        // xủ lý sự kiện theo cách đặt biến cho OnclickListener
+                        //nhwos đặt tên biến cho View.OnclickListener
+                        View.OnClickListener clickButton = new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                // dùng if-else để xử lý
+                                if((view.getId())== R.id.btn1){
+                                    txtView.setText("Inline Listener");
+                                }else if (view.getId() == R.id.btn2) {
+                                    txtView.setText("Inline Anonymous Listener");
+                                } else if (view.getId() == R.id.btn3) {
+                                    txtView.setText("Activity Listener");
+                                } else if (view.getId() == R.id.btn4) {
+                                    txtView.setText("Listener Variable");
+                                } else if (view.getId() == R.id.btn5) {
+                                    txtView.setText("Excplicit Listener class");
+                                }
+                            }
+                        };
+
+                        // đưa clickButton vào các button gán cho nó hiểu
+                        btn1.setOnClickListener(clickButton);
+                        btn2.setOnClickListener(clickButton);
+                        btn3.setOnClickListener(clickButton);
+                        btn4.setOnClickListener(clickButton);
+                        btn5.setOnClickListener(clickButton);
+                    }
+
+                    // ánh xạ id thông qua method init
+                    public void init(){
+                        txtView =(TextView) findViewById(R.id.txtview);
+                        btn1=(Button) findViewById(R.id.btn1);
+                        btn2=(Button) findViewById(R.id.btn2);
+                        btn3=(Button) findViewById(R.id.btn3);
+                        btn4=(Button) findViewById(R.id.btn4);
+                        btn5=(Button) findViewById(R.id.btn5);
+                    }
+
+                }

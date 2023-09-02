@@ -1,0 +1,136 @@
+************************ANDROID FORM WIDGET TOGGLEBUTTON************************
+>>>KHÁI NIỆM:
+ - ToggleButton là một loại giao diện trong Android, còn được gọi là nút chuyển đổi hoặc nút chuyển đổi 
+ cho phép người dùng chuyển đổi giữa hai trạng thái: bật và tắt. ToggleButton có thể được sử dụng để bật
+ hoặc tắt các tính năng, chế độ hoặc cài đặt trong ứng dụng.
+
+*********************************************
+>>>>CÁC THUỘC TÍNH 
+ ##01 android:textOn: 
+  => Xác định văn bản hiển thị khi ToggleButton ở trạng thái bật (ON).
+  => dùng để thay đổi tên trạng thái
+     vd:
+        android:textOn="Bật"
+
+        
+ ##02 android:textOff: 
+  => Xác định văn bản hiển thị khi ToggleButton ở trạng thái tắt (OFF).
+  => dùng để thay đổi tên trạng thái
+    vd:
+      android:textOff="Tắt"
+
+ ##03 android:checked:
+   => Xác định trạng thái ban đầu của ToggleButton. 
+     + Nếu giá trị là "true", ToggleButton sẽ được đánh dấu là bật(ON)
+     + nếu là "false", nó sẽ được đánh dấu là tắt(OFF).
+       vd:
+          android:checked="true"
+
+ ##04 android:onClick: 
+  => Xác định phương thức trong Activity sẽ được gọi khi người dùng nhấn vào ToggleButton.
+
+ ##05 android:thumb:  
+  => Xác định hình ảnh được hiển thị khi trạng thái của ToggleButton là bật hoặc tắt.
+
+
+
+
+ *******************************************************************
+ >>>> DEMO CODE CÓ XỬ LÝ SỰ KIÊN
+    ## FILE LAYOUT
+
+          <?xml version="1.0" encoding="utf-8"?>
+          <!--Học về toggle button-->
+          <LinearLayout
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+              <ToggleButton
+                  android:id="@+id/tgbutton"
+                  android:layout_width="150dp"
+                  android:layout_height="wrap_content"
+                  android:backgroundTint="@color/green"
+                  android:textSize="30dp"
+                  android:layout_gravity="center_vertical"
+                  android:layout_marginStart="100dp"
+                  android:checked="false"
+                  android:textOff="Tắt"
+                  android:textOn="Bật"
+                  android:onClick="showContent"/>
+
+          </LinearLayout> 
+
+
+
+  ======================================        
+  ## FILE ACTIVITY
+   > cách 01: dùng if else bình thường
+      ..........
+      public class ToggleButtonActivity extends AppCompatActivity {
+          
+          private ToggleButton toggleButton;
+
+          @Override
+          protected void onCreate(Bundle savedInstanceState) {
+              super.onCreate(savedInstanceState);
+              setContentView(R.layout.activity_toggle_button);
+
+              // liên kết id layout qua activity
+              toggleButton = findViewById(R.id.tgbutton);
+            }
+
+          // xử lý sự kiện cho toggleButton
+          public  void showContent(View v){
+            /* bản chất togglebutton lúc này là đại diện v của View nên có thể thay thể 
+              togglebutton bằng v(nhớ p kiểu) */
+
+              boolean check = ((ToggleButton)v).isChecked();
+              if(check==true){
+                  showToast("Bạn đã tắt");
+              }else{
+                      showToast("bạn đã bật");
+              }
+          }
+
+          // hiện thị thông báo với showToast
+          public void showToast(String msg){
+              Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
+          }
+      .....
+
+
+   =====================================================
+    > cách 02 sử dụng override method onCheckedChanged  
+
+        ............
+        public class ToggleButtonActivity extends AppCompatActivity {
+                private ToggleButton toggleButton;
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_toggle_button);
+
+                // liên kết id layout qua activity
+                toggleButton = findViewById(R.id.tgbutton);
+
+                // override method onCheckedChanged
+                toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
+                        if(isCheck==true){
+                            showToast("Bạn đã tắt");
+                        }else{
+                            showToast("bạn đã bật");
+                        }
+                    }
+                });
+            }
+
+            // hiện thị thông báo với showToast
+            public void showToast(String msg){
+                Toast.makeText(getApplicationContext(),msg, Toast.LENGTH_LONG).show();
+            }
+         ............

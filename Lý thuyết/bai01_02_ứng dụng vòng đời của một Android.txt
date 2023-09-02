@@ -1,0 +1,49 @@
+**************************ỨNG DỤNG VÒNG ĐỜI CỦA MỘT ANDROID TRONG PROJECT************************
+>>>>> Note:
+ -> trong bài này ta sẽ sử dụng các method vận hành một chu trionhf hoạt động cơ bản 
+ của một ứng dụng android mobile app
+ -> yêu cầu đặt ra cho project demo này là:
+   + tạo một ứng dụng mô tả chu trình vòng đời hoạt động của mobile app android
+   + có một giao diện chủ và 2 giao diện con
+   => từ giao diện chủ chính: có 2 nút button sẽ truy cập lần lượt qua 2 giao diện con
+   => ở 2 giao diện con có nút back quay lại giao diện chính
+
+  =====> mô tả chu trình hoạt động của một project androi với các method: onStart, onStop, onPause...
+  =====> hiểu rõ một project app android hoạt động sơ khai như thế nào
+  =====> cơ bản năm đc quy trình vận động và tương tác giữa các layout với Activity java.
+
+
+
+
+*********************************************************************************************
+>>>>NẮM VỮNG LẠI CHU TRÌNH VÒNG ĐỜI CỦA MỘT ANDROID 
+==> Trong Android, visible lifetime và foreground lifetime là hai khái niệm quan trọng liên quan đến
+vòng đời (lifecycle) của các thành phần và ảnh hưởng đến việc thực thi các hoạt động (Activity)
+và dịch vụ (Service).
+
+======================
+ ## Visible lifetime:
+  -> Visible lifetime là một phạm vi thời gian mà hoạt động (Activity) hoặc fragment hiển thị trước mặt
+  người dùng. Điều này xảy ra khi người dùng đang tương tác với ứng dụng của bạn
+          
+          ++ ví dụ:
+             Như đang nhìn vào hoạt động hoặc fragment đó. Trong thời gian này, hoạt động hoặc 
+          fragment này được coi là "hiển thị" và nằm trong trạng thái Resumed hoặc Started.
+
+  -> hoạt động của vòng đời này xảy ra từ khi gọi onStart-> onStop        
+
+ =======================
+ ##foreground lifetime:
+  -> Foreground lifetime là một phạm vi thời gian mà một dịch vụ (Service) được coi là đang chạy trong 
+  trạng thái "foreground" của hệ thống. Khi một dịch vụ được đánh dấu là "foreground", nó đang thực
+  hiện một công việc quan trọng và người dùng có thể nhận thấy hoạt động của nó thông qua thông báo
+  hoặc biểu tượng trạng thái.
+
+  -> Để đánh dấu một dịch vụ là "foreground", bạn cần sử dụng phương thức startForeground() của lớp Service. 
+  Điều này thường được sử dụng khi một dịch vụ đang thực hiện công việc không thể bị gián đoạn, và bạn muốn 
+  đảm bảo rằng hệ thống không sẽ giải phóng tài nguyên của dịch vụ trong trường hợp thiếu tài nguyên.
+
+
+**********************************************************************************************
+>>>>> CODE DEMO ỨNG DỤNG
+--> đang trong quá trình thực thi

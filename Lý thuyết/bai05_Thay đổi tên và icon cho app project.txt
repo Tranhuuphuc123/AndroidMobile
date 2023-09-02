@@ -1,0 +1,85 @@
+**********************THAY ĐỔI TÊN APP PROJECT VÀ ICON BIỂU TƯỢNG CHO PROJECT*****************
+>>>>> THAY ĐỔI TÊN APP:
+ -> Khi tạo một project ta đã đặt tên cho một app, nên khi build chạy trong cấu hình manifest
+ chỗ android:label ="@string/name" chính là nơi chứa tên của project app.
+ -> muốn thay đổi tên app đó thành một tên khác ta làm như sau:
+   + b1: truy cập vào file cấu hình Minifest
+   + b2: click chuột giữ ctrl vào android:label="@string/name"
+   -> dẫn đến file strings.xml
+   + ở mục:
+      <resources>
+          <string name="app_name">name_project</string>
+      </resources>
+
+     --> ta tiến hành đổi tên theo ý mún
+
+   + b3: lên máy ảo hay thật xóa đi app trc đó
+   + b4: build chạy lại -> ok?
+
+   **note**:
+     -> lưu ý nhớ chú ý đến cặp thuộc tính <inter-filter> chỉ định cụ thể cái Activity nào đang chạy
+     chính để đổi cho đúng.
+
+
+  
+ *****************************************************************************
+ >>>>> ĐỔI ICON CHO PROJECT APP MOBILE
+  # b1: r-click vào app của project android
+  # b2: new
+  # b3: Image Assets
+  # b4: Mở hộp thoại ta có thể đổi theo 1 trong 3 loại sau
+    + icon: đổi ảnh nền
+      ++ đổi màu icon
+      ++ đổi màu nên background
+      ++ đổi shape bao quanh: circle, rectang...
+    + đổi tên text:
+      ++ đổi màu chữ
+      ++ đổi màu nền
+      ++ đổi shape: circle, rectang...
+    
+    + đổi clipArt: tức là các icon có sẵn:
+      ++ đổi màu clipArt
+      ++ đổi màu nền cho clipArt với, shape bao quanh
+      ++ đổi shape: circle, rectang
+
+   
+  #b5: next tới
+  #b6: chú ý nếu thiết lặp mặc định rất dễ bị lỗi not found background color
+   + nguyên nhân:  nguyên nhân đầu tiền là màu background color trong file drawable/ic_laucher_background.xml
+   là mặc định, với values/ic_laucher_background.xml đc sinh ra sau dẫn đến project build not found background
+   color:
+
+         <resources>
+            <color name="ic_launcher_background">#2C4CCD</color>
+        </resources>
+
+    ==>  khi next xong project sẽ sinh ra file trên.."values/ic_laucher/background.xml" 
+    nhưng nó dễ bị trùng với màu nền màu chũ sẵn có của icon khi mới tạo project là 
+    "drawable/ic_laucher_background.xml" nó build sẵn có trc đó.. nên dẫn đễn project khi build không
+    xác định đc lấy background ở đâu là đúng
+
+    ==> hg giải quyết:
+      trong values/color: ta thiết lặp thêm trong values/color.xml
+
+        <resources>
+            <color name="black">#FF000000</color>
+            <color name="white">#FFFFFFFF</color>         
+            <color name="green">#00CCFF</color>
+
+            // thêm màu nền của ic_laucher_background với bacground color mới thiết lập như sau
+            <color name="ic_launcher_background">#2C4CCD</color>
+        </resources>
+
+     ==> lúc này bên file values/ic_laucher_background.xml: ta ẩn đi cái 
+            <color name="ic_launcher_background">#2C4CCD</color>
+        -> để tránh trùng màu, lỗi error Duplicate.  
+
+   #b7: xóa app cũ đi
+   #b8: build lại project là ok!.
+   ==> có thể áp dụng 3 kiểu that Text, thay clipArt, thay icon.
+    
+    ..
+
+ **Note**:
+  => lưu ý tiến hành xóa bỏ app cũ đi rồi hẳn chạy lại project
+

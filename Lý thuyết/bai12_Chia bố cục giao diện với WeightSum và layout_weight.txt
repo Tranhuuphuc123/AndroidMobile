@@ -1,0 +1,67 @@
+************************TIỀM HIỂU VỀ PHAN CHIA BỐ CỤC TỶ LỆ VỚI WEUGHTSUM VÀ LAYOUT_WEIGHT************************************
+>>>>>KHÁI NIỆM:
+ **** CÁCH CHIA GIAO DIỆN CÁC PHẦN ĐỀU NHAU VỚI LAYOUT_WEIDTH & WEIGHTSUM******
+  - Trong Android Mobile Java, hai thuộc tính quan trọng liên quan đến việc quyết định cách các phần 
+  tử giao diện sẽ được sắp xếp và phân bố trên màn hình là android:weightSum và android:layout_weight.
+  --> hiểu rõ hơn là ta cũng có thể tùy chỉnh vị trí hay bố cục các view với margin hay từ điều chỉnh
+  các kích thước.. tuy nhiên để phân chia bố cục một cách hiệu quả hơn ta dùng 2 thuộc tính android:weightSum 
+  và android:layout_weight dễ dễ dàng phân chia hiệu quả bố cục màn hình hơn
+
+   ## android:weightSum:
+    - Đây là thuộc tính được sử dụng để xác định tổng trọng số của một tập hợp các phần tử giao diện nằm
+    trong một Layout cha, thường là một LinearLayout. Giá trị của android:weightSum là một số thực dương,
+    thường là 1.0. Thuộc tính này chỉ có hiệu lực khi được sử dụng kết hợp với thuộc tính android:layout_weight
+    của các phần tử con bên trong Layout cha.
+
+   ## android:layout_weight:
+    - Đây là thuộc tính được sử dụng để xác định trọng số của một phần tử giao diện trong một Layout cha, thường
+    là một LinearLayout. Giá trị của android:layout_weight là một số thực dương, thường là từ 0 đến 1.0. Khi sử 
+    dụng thuộc tính này, phần tử giao diện sẽ chiếm một phần diện tích trên màn hình dựa trên tỉ lệ trọng số của 
+     android:weightSum quy định trc đó so với các phần tử con khác trong cùng Layout cha. 
+
+
+   => vd:
+              <?xml version="1.0" encoding="utf-8"?>
+              <LinearLayout
+                  xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="horizontal"
+                  android:weightSum="3">
+
+                  <TextView
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:background="@color/yellow"
+                      android:layout_weight="1"
+                      android:text="Click1"
+                      android:textSize="50dp"
+                      android:gravity="center"/>
+
+                  <TextView
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:background="@color/green"
+                      android:layout_weight="2"
+                      android:text="Click2"
+                      android:textSize="50dp"
+                      android:gravity="center"/> 
+
+              </LinearLayout>
+
+        --> nhìn vào đoạn code trên ta thấy đc dùng weightsum để tạo ra tổng tỷ lệ bố
+        cục cho toàn viewgroup
+        --> dùng layout_weight để phân chia bố cục cụ thể cho từng view dựa trên tổng trọng số
+        của weightsum
+
+>>>>>>>>NOTE<<<<<<<<<<<
+   => chú ý rằng tỷ lên trên sẽ sai xót nếu như không đưa width, height tương ứng theo
+   sắp xếp orientation trc đó về 0dp.
+    ~ nghĩa là vd:
+       + nếu viewgroup trên sắp xếp theo chiều ngang horizontal <=> tương ứng width: 0dp
+       + nếu viewgrup trên sắp xếp theo chiều dọc vertical <=> tương ứng height: 0dp
+       => đều đó có nghĩa cho kích thước width, height về giá trị ban đầu vị trí 0dp
+       trc rồi mới sét tỷ lệ chiếm hữu layout_weight dựa trên weightsum.
+
+
+

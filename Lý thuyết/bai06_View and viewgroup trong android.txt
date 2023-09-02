@@ -1,0 +1,206 @@
+﻿**************************VIEW AND VIEWGROUP TRONG ANDROID JAVA*******************
+>>>> KHÁI NIỆM:
+ - Trong Android, View và ViewGroup là hai lớp quan trọng trong việc xây dựng giao diện người dùng.
+ Dưới đây là một số khái niệm cơ bản về View và ViewGroup:
+
+ ## VIEW:
+  - View là lớp cơ bản đại diện cho các thành phần giao diện trong Android như Button, TextView, ImageView,
+  EditText, vv.
+  - Mỗi View đều có khả năng vẽ, xử lý sự kiện và nhận dữ liệu đầu vào từ người dùng.
+  - View chịu trách nhiệm hiển thị thông tin và tương tác với người dùng.
+
+ ## VIEWGROUP:
+  - ViewGroup là lớp con của lớp View và đại diện cho một container chứa các View khác.
+  --> rõ hơn thì nó tập hợp các view tương ứng thành một group dễ quản lý.
+
+  - ViewGroup có khả năng chứa và sắp xếp các View con bên trong nó theo các quy tắc cụ thể.
+  - Một số ví dụ về ViewGroup là LinearLayout, RelativeLayout, FrameLayout, ConstraintLayout, vv.
+
+===> Đây là các khái niệm cơ bản về Android Layout
+
+
+*******************************************************************************************************************
+>>>> CÁC THUỘC TÍNH VÀ THẺ SỬ DÙNG CHO VIEW AND VIEWGROUP:
+ ## VIEW &&& VIEWGROUP
+  
+   1/ android:id: 
+   -> Định danh duy nhất cho View trong giao diện. Bạn có thể sử dụng '@+id/' để tạo một ID mới hoặc
+   '@id/' để tham chiếu đến ID đã tồn tại.
+         
+         vd:
+          android:id="@+id/tv_title"
+          -> tv_title chính là ID đã đc người dùng thiết lập trc đó
+
+   2/ android:layout_width và android:layout_height:
+    -> Định nghĩa chiều rộng và chiều cao của View. Các giá trị phổ biến bao gồm wrap_content
+    (độ rộng hoặc chiều cao tự động co dãn tùy thuộc vào nội dung) và match_parent (độ rộng hoặc
+    chiều cao tương ứng với kích thước của View cha).
+
+          vd:
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+
+   3/ android:layout_margin: 
+    -> Định nghĩa khoảng cách giữa View hiện tại và các View khác xung quanh nó.
+    -> các vị trí:
+      + layout_marginTop: k/c lề trên
+      + layout_marginStart: k/c lề trái
+      + layout_marginEnd: k/c lề phải
+      + layout_marginBottom: k/c lề dưới
+      + layout_margin: k/c đều 4 hướng
+      ==> lưu ý bới margin nên dùng vị trí chỉ định rõ ràng
+
+   4/ android:padding:
+    -> Định nghĩa khoảng cách giữa nội dung của View và ranh giới của View.
+    -> các vị trí:
+     + paddingTop: cách lể trên
+     + paddingStart: cách lề trái
+     + paddingLeft: cách lề phải
+     + paddingBottom: cách lề dưới
+     + padding: chỉ cần khai báo padding nó sẽ hiểu tự cách đều 4 hướng
+
+   5/ android:background: 
+    -> Định nghĩa màu nền của View. Bạn có thể sử dụng màu thông qua @color/ hoặc hình ảnh thông qua @drawable/.
+    -> tô màu nền cho button thì dùng: android: backgroundTint()
+
+   6/ android:text: 
+    -> Định nghĩa văn bản hiển thị trong TextView hoặc Button.
+          vd:
+                android:text="Click Aptech"
+
+   7/ android:textSize: 
+    -> Định nghĩa kích thước văn bản trong TextView hoặc Button.
+           vd:
+                android:textSize="20dp"
+              
+   8/ android:textStyle:
+    -> định phong cách kiểu chữ
+     + bold
+     + italic
+     + normal
+
+   9/ android:textColor:
+    -> Định nghĩa màu sắc của văn bản trong TextView hoặc Button.
+
+   10/ android:gravity:
+    -> Định nghĩa căn chỉnh văn bản hoặc nội dung trong View.
+    -> các vị trí khi dùng gravity
+     + top: căn lề trên
+     + bottom: căn lề dưới
+     + start: canh lề trái
+     + end: canh lề phải
+     + có thể kết hơp cùng lúc: start|top, top, bottom....
+     + center: căn giữa 
+       ++ center_horizontal(căn giữa mà theo chiều ngang)
+       ++ center_vertical(căn giữa mà theo chiều dọc)
+
+   11/ android: layout_gravity
+    => các thuộc tính vị trí layout_gravity cũng tương tự như gravity:
+     + top, bottom, start(trái),, end(phải)
+     + center: giữa trung tâm
+       ++ center_horizontal(căn giữa mà theo chiều ngang)
+       ++ center_vertical(căn giữa mà theo chiều dọc)
+ 
+  ****Note****
+   => điểm khác giữa gravity và layout_gravity
+    + gravity thiết lập vị trí các tp bên trong một đối tượng
+    + layout_gravity thiết lặp vị trí tp bên ngoài đối tượng
+       vd:
+           tạo một button trong một viewgroup: linear_layout có tên là click
+           -> nếu dùng android: gravity="center", lúc này phân nằm giữa là chữ click so với button đó
+           -> nếu dùng android:layput_gravity="center", thì lúc này button đó sẽ nằm giữa linear_layout
+
+
+   12/ android:orientation: 
+    -> Chỉ định hướng của LinearLayout, có thể là:
+     + "horizontal" (ngang)
+     + "vertical" (dọc).
+
+
+   13/ android: Visibility
+    -> chỉ định ẩn hiện thị view hay vô hiệu hóa nó đi
+    -> các thuộc tính đi kèm
+     + vertical: bình thường
+     + gone: ẩn giao diện view viewgroup đi, nó làm mất luôn khung view(text, button...)
+     mất đi lun ẩn mất dép đúng nghĩa
+     + Invisible: ẩn đi thông tin nội dung của view nhưng vẫn giữ cái viewgroup khung view con lại
+       vd:
+          nút button có tên clcick nếu dùng Invisible thì chỉ nút button và tên click bị ẩn đi chứ tp view vẫn 
+          còn đúng vị trí ở đó không có các view khác đè lên.
+
+     .....
+     ==> còn rất nhiều sẽ chiêm nghiệm bằng thực tế.
+
+   14/ android:textAllCaps="true"
+    => thiết lập tất cả chữ đều in hoa
+
+   15/ android: drawableLeft="@drawable/image.png"
+       android: drawableEnd="@drawable/image.png"
+       android: drawableBottom="@drawable/image.png"
+       android: drawableTop="@drawable/image.png"
+       ....
+
+       ==> dẫn ảnh vào các Edittext, TextView, Button.....
+       ==> tạo các icon ảnh
+
+ ## NOTE:
+ --> Viewgroup khá rộng nên sẽ được tiềm hiểu riêng ở bai03_Viewgroup trong android mobile.txt
+ --> có nhiều thẻ thuộc tính viewgroup khác nhau
+ --> các viewgroup cũng dùng chung các thuộc tính của thẻ view như đã liệt kê ở trên
+ ....
+
+
+
+********************************************************************************************************
+ >>>>>>HƯỚNG DẪN THIẾT LẬP GIÁ TRỊ VALUES TÁI SỬ DỤNG CHO CÁC PADDING, MARGIN.....
+ ==>cách thức này là thiết lập các giá trị màu sắc, padding, margin.. trong values của folder res
+ rồi tái sử dụng lại bằng cách gọi lại nó thông qua "@<tên thuộc resources>/<tên thuộc tính>"
+ ==> các biết thực hiện
+
+  # bước 01:
+   -> vào res/values
+
+  # bước 02:
+    ->vd tạo một file tên dimens(tùy chỉnh kích thước)
+    -> trong values/r-click/new/values resources file/ thiết lặp tên. vd: dimens
+
+  # bước 03: thiết lập thuộc tính cho file vừa tạo, vd: dimens.xml
+     + cấu hình giả dụ như sau:
+          <resources>
+              <dimen name="padding">10</dimen>
+              <dimen name="margin_top">150</dimen>
+              <dimen name="size">50dp</dimen
+              <dimen name="button_name">Click1</dimen>
+          </resources>
+
+       <=> hoặc vd tạo file colors.xml
+          <resources>
+              <color name="black">#FF000000</color>
+              <color name="white">#FFFFFFFF</color>
+              <color name="green">#00CCFF</color>
+              <color name="red">#FF0033</color>
+              <color name="yellow">#FFFF00</color>
+              <color name="grey">#CCCCFF</color>
+              <color name="pink">#FF33CC</color>
+              <color name="ic_launcher_background">#2C4CCD</color>
+          </resources>
+
+   # bước 05: sử dụng lại các values vừa thiết lặp
+    -> trong Activity_layout.xml
+    -> cách sử dụng giả dụ như sau:
+
+       vd:
+           <LinearLayout>
+               android:margin ="@dimen/margin_top" 
+               android:Text="@dimen/button_name"
+               android:TextSize ="@dimen/size"
+               android:TextColor ="@color/red"
+               .....
+           </LinearLayout>
+
+     ===> như vậy qua vd ta có thể tái sử dụng nó bằng cách gọi đến lớp xml trong res/values
+     ===> gọi bằng cách "@<tên resources>/<tên thuộc tính đã thiết lặp trong resources>"
+     ===> ưu điểm của nó là thay vì viết trực tiếp ta có thể dùng "@<tên rs>/ <tên tt>"
+     đều này giúp tái sử dụng nếu như mún dùng thuộc tính co cùng kích cỡ màu sắc hay tên đó nhiều
+     lần, ta không cần phải viết lại nhiều lân mà chỉ cần dùng mã đã thiết lập trc đó.
+     

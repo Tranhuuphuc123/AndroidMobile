@@ -1,0 +1,151 @@
+***********************TIỀM HIỂU CHI TIẾT VỀ CÁC VIEWGROUP TRONG ANDROID MOBILE***********************
+>>>> KHÁI NIỆM:
+ - ViewGroup là lớp con của lớp View và đại diện cho một container chứa các View khác.
+  --> rõ hơn thì nó tập hợp các view tương ứng thành một group dễ quản lý.
+
+  - ViewGroup có khả năng chứa và sắp xếp các View con bên trong nó theo các quy tắc cụ thể.
+  - Một số ví dụ về ViewGroup là LinearLayout, RelativeLayout, FrameLayout, ConstraintLayout, vv.
+
+
+********************************************************************************************************
+>>>>CÁC THẺ THUỘC TÍNH VIEW GROUP:
+
+=============================
+ *** VIEWGROUP LINEARLAYOUT ***
+ >> CẤU HÌNH THEO QUY TRÌNH 3 BƯỚC XÂY DỰNG PROJECT VỚI VIEWGROUP LINEARLAYOUT
+  # Quy trình 01: thiết kế cấu hình giao diện trên file activity_main.xml
+    => lưu ý trong code Android mobile không nên gáng cứng
+
+       vd: text, hay kích thước 
+           android:layout_width="500dp"
+           android:text="Click"/>
+
+       <=> thay vào đó ta nên thiết lập các file .xml riêng lẻ
+       <=> tạo các file xml trong mục res/values:
+
+       vd: tạo file string.xml
+           <resources> 
+                <string name="click_name">Click</string>
+            </resources>
+
+        <=> sau đó dẫn vào view của file activity_main.xml
+             android:text="@string/click_name"/>
+             -> lúc này button, text, .... sẽ hiện lên chữ Click mà không cần ghi trực tiếp
+
+        ===> tương tự cho các kích thước, hay thiết lập khác..      
+        ===> làm như vậy sẽ chuyên nghiệp hơn, dễ quản lý bảo trí hơn
+        và tránh lỗi phát sinh trong quá trình code
+
+
+        ===> đây là cấu hình mẫu cho file activity_main.xml-> có thể tham khảo thêm ở project
+        source code Layout_Viewgroup:
+     
+     ## Quy trình 2-3: chưa triển khai trong vd này
+
+ =============================================           
+ >>>> CÁCH CHIA GIAO DIỆN CÁC PHẦN ĐỀU NHAU VỚI LAYOUT_WIDTH
+  - Trong Android Mobile Java, hai thuộc tính quan trọng liên quan đến việc quyết định cách các phần 
+  tử giao diện sẽ được sắp xếp và phân bố trên màn hình là android:weightSum và android:layout_weight.
+  --> hiểu rõ hơn là ta cũng có thể tùy chỉnh vị trí hay bố cục các view với margin hay từ điều chỉnh
+  các kích thước.. tuy nhiên để phân chia bố cục một cách hiệu quả hơn ta dùng 2 thuộc tính android:weightSum 
+  và android:layout_weight dễ dễ dàng phân chia hiệu quả bố cục màn hình hơn
+
+   ## android:weightSum:
+    - Đây là thuộc tính được sử dụng để xác định tổng trọng số của một tập hợp các phần tử giao diện nằm
+    trong một Layout cha, thường là một LinearLayout. Giá trị của android:weightSum là một số thực dương,
+    thường là 1.0. Thuộc tính này chỉ có hiệu lực khi được sử dụng kết hợp với thuộc tính android:layout_weight
+    của các phần tử con bên trong Layout cha.
+
+   ## android:layout_weight:
+    - Đây là thuộc tính được sử dụng để xác định trọng số của một phần tử giao diện trong một Layout cha, thường
+    là một LinearLayout. Giá trị của android:layout_weight là một số thực dương, thường là từ 0 đến 1.0. Khi sử 
+    dụng thuộc tính này, phần tử giao diện sẽ chiếm một phần diện tích trên màn hình dựa trên tỉ lệ trọng số của 
+     android:weightSum quy định trc đó so với các phần tử con khác trong cùng Layout cha. 
+
+
+    ##vd code:
+                <?xml version="1.0" encoding="utf-8"?>
+                <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+
+                    <!-android:weighSum là  xác định tổng trọng số của một tập hợp các phần tử giao diện nằm
+                     trong một Layout cha --->
+                    android:weightSum="6"
+
+                    android:layout_height="match_parent">
+
+                    <!--các viewgroup Textview1-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:background="@color/black"
+
+                       //thuộc tính được sử dụng để xác định trọng số của một phần tử giao diện trong một Layout cha
+                        android:layout_weight="2"
+
+                        android:layout_height="wrap_content">
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:padding="@dimen/padding_text"
+                           android:textColor="@color/white"
+                           android:text="@string/click_name"
+                           android:textSize="15dp"
+                           android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <!--các viewgroup Textview2-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:background="@color/white"
+
+                        //thuộc tính được sử dụng để xác định trọng số của một phần tử giao diện trong một Layout cha
+                        android:layout_weight="2"
+
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="@string/click_name"
+                            android:textColor="@color/green"
+                            android:padding="@dimen/padding_text"
+                            android:textSize="15dp"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <!--các viewgroup textview3-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:background="@color/green"
+
+                       //thuộc tính được sử dụng để xác định trọng số của một phần tử giao diện trong một Layout cha
+                        android:layout_weight="2"
+
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="@string/click_name"
+                            android:padding="@dimen/padding_text":w
+                            android:textColor="@color/black"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+           
+  =====> Note: lưu ý khi sắp xếp chia tỉ lệ bố cụ thường sẽ theo chiều ngang Horizontal hay chiều dọc vertical
+  =====> vì vầy nếu muốn sắp xếp phần chia tỉ lệ hợp lý với androi:weighSum tổng trọng số và android:layout_weight
+  thì ta cần tùy chỉnh
+   + android:layout_width="value", value = 0dp nếu là chia bố cục theo chiều ngang Horizontal
+   + android:layout_height="value", value = 0dp nếu là chia bố cục theo chiều dọc vertical
+
+
+   ====> trên đây là kiến thức và ví dụ thực tiện về cách tạo ra bố cục phân chia tỉ lệ khoa học với tính năng
+   android:weighSum và android:layout_weight mà không phải chia bố cục một cách thủ công như tùy chỉnh margin, 
+   padding...... một cách rất ư thiếu khoa học và thủ công. Cách này giúp ta phân chia bố cục đều hợp lý và nhanh chóng
+
+

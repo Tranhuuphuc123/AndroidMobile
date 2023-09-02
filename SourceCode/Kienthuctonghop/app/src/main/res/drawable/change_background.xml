@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--cách 01-->
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    &lt;!&ndash;dẫn màu gốc bên themes qua&ndash;&gt;-->
+<!--    <solid android:color="?attr/colorPrimary" />-->
+<!--    &lt;!&ndash;tạo độ bo viền tròn  cho button&ndash;&gt;-->
+<!--    <corners android:radius="20dp"/>-->
+<!--</shape>-->
+
+
+
+<!--Cách 02-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Khi button được nhấn -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/red" />
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+    <!-- Mặc định khi chưa tác động nhấn -->
+    <item>
+        <shape android:shape="rectangle">
+            <!--dẫn màu gốc bên themes qua-->
+            <solid android:color="?attr/colorPrimary" />
+            <!--tạo độ bo viền tròn  cho button-->
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+</selector>
+
+
+

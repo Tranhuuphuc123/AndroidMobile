@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--tự tạo kích thước riêng thay vì xét cứng: dimens(nghĩa là: kích thuước, k/c)
+  + wrap_content: xét kích thước tự do tự điều chỉnh
+  + match_parent: xét kích thước phụ thuộc thẻ view cha
+  + dimens: tự thiết lập kích thước trước đó rồi import vào
+-->
+<resources>
+    <dimen name="height_layout">500dp</dimen>
+    <!--sét padding cho viewgroup-->
+    <dimen name="padding">150dp</dimen>
+    <dimen name="padding_text">10dp</dimen>
+    <!--tùy chỉnh margin k/c lề giữa các view và viewgroup-->
+    <dimen name="margin">30dp</dimen>
+    <dimen name="margin_start">10dp</dimen>
+</resources>

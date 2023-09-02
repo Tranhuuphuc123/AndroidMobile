@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.DatePicker_Tonghop" parent="Theme.Material3.DayNight.NoActionBar">
+        <!--tùy chỉnh màu gốc-->
+        <item name="colorPrimary">@color/green</item>
+
+    </style>
+
+    <style name="Theme.DatePicker_Tonghop" parent="Base.Theme.DatePicker_Tonghop" />
+</resources>

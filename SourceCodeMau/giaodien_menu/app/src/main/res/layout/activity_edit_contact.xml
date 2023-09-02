@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditContactActivity">
+
+    <!--toolbar nới chứa menu khi load vào-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_EditContact"
+        app:title="ContactList"
+        app:titleTextColor="@color/white"
+        android:background="@color/cardview_dark_background"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TableLayout
+        android:id="@+id/table_EditContact"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="80dp"
+        android:padding="10dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_Editcontact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDIT CONTACT"
+                android:textSize="20dp"
+                android:layout_span="2"
+                android:textAlignment="center"
+                android:inputType="textPersonName"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100">
+            <TextView
+                android:id="@+id/txt_EditContact_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="20dp"
+               android:layout_weight="30"/>
+
+            <EditText android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_EditContact_name"
+                android:layout_weight="70"
+                android:hint="nhập tên"
+                android:layout_marginLeft="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100">
+            <TextView
+                android:id="@+id/txt_EditContact_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="phone Number"
+                android:textSize="20dp"
+                android:layout_weight="30"
+                android:layout_marginBottom="5dp"/>
+
+            <EditText android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_EditContact_phone"
+                android:layout_weight="70"
+                android:hint="phone number"
+                android:layout_marginLeft="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100">
+            <TextView
+                android:id="@+id/txt_EditContact_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nick Name"
+                android:textSize="20dp"
+                android:layout_weight="30"/>
+
+            <EditText android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_EditContact_nickname"
+                android:layout_weight="70"
+                android:hint="Address"
+                android:layout_marginLeft="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100">
+            <TextView
+                android:id="@+id/txt_EditContact_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textSize="20dp"
+                android:layout_weight="30"/>
+
+            <EditText android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_EditContact_address"
+                android:layout_weight="70"
+                android:hint="name"
+                android:layout_marginLeft="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100">
+            <TextView
+                android:id="@+id/txt_EditContct_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notes"
+                android:textSize="20dp"
+                android:layout_weight="30"/>
+
+            <EditText android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_EditContact_note"
+                android:layout_weight="70"
+                android:layout_marginLeft="20dp"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100">
+            <Button android:id="@+id/btn_EditContact_Save"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="SAVE CONTACT"
+                android:textSize="20dp"
+                android:layout_span="2"
+                android:layout_weight="100"
+                android:textAlignment="center"
+                android:background="@drawable/rectangle"/>
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

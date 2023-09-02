@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txt_list_rollno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:text="A001"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_list_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:text="Tran Huu Phuc"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/txt_list_rollno"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_list_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:text="22/09/1995"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/txt_list_name"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_list_radiobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:text="long"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/txt_list_date"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

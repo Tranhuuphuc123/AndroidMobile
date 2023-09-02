@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VirtualKeyboardActivity"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/btn_Show"
+        android:text="Show"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:textSize="20dp"
+        android:hint="nhập dữ liệu"
+        android:id="@+id/edit_One"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Show"/>
+
+    <EditText
+        android:textSize="20dp"
+        android:hint="nhập dữ liệu"
+        android:id="@+id/edit_Two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/edit_One"/>
+
+    <Button
+        android:id="@+id/btn_Hide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/edit_Two"
+        android:layout_marginTop="10dp"
+        android:text="Hide Keyboard"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_View"
+        android:background="@color/grey"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/btn_Hide"
+        android:layout_marginTop="10dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

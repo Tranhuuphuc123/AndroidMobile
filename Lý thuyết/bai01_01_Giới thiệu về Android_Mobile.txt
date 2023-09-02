@@ -1,0 +1,212 @@
+*******************TIỀM HIỂU VỀ ANDROID_MOBILE VỚI JAVA************
+>>>>KHÁI NIỆM:
+ - Tiềm hiểu về Android là gì
+ ---> có thể tham khảo Google
+
+>>>>> CÀI ĐẶT MÁY ẢO GENYMOTION
+ # Bước 01:
+  - Truy cập Website: https://www.genymotion.com/download/
+  - tải và cài bản có hổ trợ với Viturbox
+
+ #Bước 02:
+  - tải cài đặt trên máy tính cá nhân
+  - download máy ảo cần thiết
+  - khởi chạy máy ảo
+
+ ***** Note*****:
+  ===>  có nhiều sự lựa chọn để chạy ứng dụng Mobile App Android
+  ===> Ta có thể chạy với máy ảo tải và cài đặt trực tiếp trên android studio
+       Ta có thể cài máy ảo bên thứ 3 như Genymotion
+       Ta có thể kết nối với máy thật thông qua tính năng share của nhà phát triển
+
+
+
+
+
+***************************************************************************************************************
+>>>> CÂU TRÚC CỦA MỘT PROJECT ANDROID:
+ - Có 4 thành phần chính quan trọng trong một project Androi
+  ##01: thành phần thứ nhất trong project:Controller
+  ->package controller chính là mục java chứa các Activity
+
+  ##02: View: giao diện thiết kế chính là mục res/laypout/activity_main.xml
+  --> chức năng thiết kế giao diện
+
+  ##03: manifests: thư mục AndroidManifest.xml
+  -> chức năng config(cấu hình) cho ứng dụng cá nhân android mobile
+  -> một cấu hình cho project android mobile cần ít nhất một activity tồn tại
+  -> cấu hình activity trong AndroidManifest.xml:
+          ...
+          <activity
+               // dẫn file Mainactivity trong Java vào
+                android:name=".MainActivity"
+                android:exported="true">
+
+                // thiết lập intent-filter nếu thiếu nó không chạy đc ứng dụng và báo lỗi ngay
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+
+  ##04: Gradle Scripts: đây là mục để build các thư viện bổ trợ trong khi code aandroid
+
+
+***********************CHÚ Ý****************************************
+  >> lưu ý lần đầu mở nó sẽ bị dính trong trình duyệt android studio -> mún tách nó ra đọc LẬP
+   --> thì chọn file - > setting -> search -> nhập emulator -> chọn tool/emulator -> tắt tich ở mục launch in the tool windown
+
+   >> hoặc có thể: tool -> sdk manager -> tool -> emulator -> tắt tich ở mục launch in the tool windown
+
+
+
+*******************************************************************************************************************
+>>>>>>CÁC METHOD TRONG MỘT ACTIVITY:
+=> VD: DemoActivity.java
+## cấu trúc:
+
+        package com.example.tonghopkienthuc;
+        import android.app.Activity;
+        import android.os.Bundle;
+
+        public class DemoActivity extends Activity {
+
+         // overide method onCreate: Dùng để thiết lập phần giao diện hay Activity cho layout
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                // dùng setContentView để dẫn file layout chạy thực thi
+                setContentView(R.layout.activity_demo);
+            }
+
+          /*Một số method override thông dung khác như sau
+             + thứ tự thực thi các method khi build project là từ trên xuống: onStart->onRestart->onResume
+             + onPause và onSTop dùng khi tắt ứng dụng hay đóng ứng dụng: 
+                vd: như nhấn nút exit hay nhấn home quay về màn hình chủ thì hai cái
+                method này sẽ đc thực thi
+
+             + khi nhấn nút back quay lại khi vừa mở trình duyệt nào đó
+             --> thì lút này các nút onpPause, onStop, onDestroy sẽ đc thực thi
+
+          .....
+          */  
+          .....
+             @Override
+              protected void onStart() {
+                  super.onStart();
+              }
+
+              @Override
+              protected void onRestart() {
+                  super.onRestart();
+              }
+
+              @Override
+              protected void onResume() {
+                  super.onResume();
+              }
+
+
+              /*
+                Khi nào sẽ dùng onPause:
+                -> trong một ứng dụng mobile khi nhấn vào một button hay sự kiện nào đó
+                nó mở lên giao diện thứ 2 nhưng giao diện thứ 2 chỉ chiếm phần nhỏ
+                và nó đè lên trên giao diện đầu thì onPause sẽ chạy
+                   vd: nhấn nút mở app1
+                   -> app1 hiện lên một hộp thoại nhỏ là tiếp tục truy cập hay cancel
+                   -> một hộp thoại nhò: nằm đè lên giao diện chính
+              */
+              @Override
+              protected void onPause() {
+                  super.onPause();
+              }
+
+
+              /*
+                onStop thì ngc lại onPause: cũng vd như onPause nếu nhấn button mở app2 mà 
+                app2 mở lên thành một giao diện mới tắt mắt đi giao diện menu chính
+                tức hiện ra giao diện mới hoàn toàn thì lúc này onPause sẽ chạy trc để dừng menu
+                sau đó onStop sẽ chạy tiếp để đóng hẳn giao diện menu để mở đc giao diện app2
+              */
+              @Override
+              protected void onStop() {
+                  super.onStop();
+              }
+
+              @Override
+              protected void onDestroy() {
+                  super.onDestroy();
+              }
+        }
+
+
+
+
+
+
+
+*************************************************************************************************************************
+  *********************QUY TRÌNH THIẾT KẾ MỘT ỨNG DỤNG TRONG ANDROID**************
+## Quy trinh thứ 01: thiết kế giao diện
+ -> truy cập res/layout/activity_main.xml
+ -> chuyển qua mục code hoặc design để có thể code hay kéo thả
+
+     code mẫu:
+
+         <?xml version="1.0" encoding="utf-8"?>
+         <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".MainActivity">
+
+              <!--Bước 01 xây dựng giao diện view kem mã id dễ quản lý-->
+             <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Click Aptech"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="173dp"
+                tools:layout_editor_absoluteY="320dp"
+                tools:ignore="MissingConstraints" />
+
+         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  ## Quy trình thứ 02: Khai báo và ánh xạ view
+  ## Quy trình thứ 03: Xử lý logic và sự kiện
+  ==> cả hai đều viết chung trong file ManActivity.java
+
+          package com.example.myapp;
+
+          import androidx.appcompat.app.AppCompatActivity;
+
+          import android.os.Bundle;
+          import android.view.View;
+          import android.widget.TextView;
+          import android.widget.Toast;
+
+          public class MainActivity extends AppCompatActivity {
+
+              @Override
+              protected void onCreate(Bundle savedInstanceState) {
+                  super.onCreate(savedInstanceState);
+                  setContentView(R.layout.activity_main);
+
+                  // thiết lập mục textview năm ở quy trình 2 khai báo và ánh xạ view
+                  TextView textView = findViewById(R.id.tv_title);
+
+                  // Quy trình 03: xử l logic và sự kiện
+                  textView.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Welcome bạn đến  với thế giới Android mobile",Toast.LENGTH_SHORT).show();
+                      }
+                  });
+
+              }
+          }
+

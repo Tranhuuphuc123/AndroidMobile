@@ -1,0 +1,106 @@
+**************TIỀM HIỂU VỀ HỘP THOẠI THÔNG BÁO ALERT DIALOG********************
+>>>>>KHÁI NIỆM
+ - AlertDialog là một hộp thoại hiển thị thông tin cảnh báo hoặc yêu cầu người dùng thực hiện
+ một tác vụ nhất định. Nó thường được sử dụng để hiển thị thông báo về lỗi, xác nhận hành động
+ của người dùng hoặc yêu cầu xác nhận trước khi thực hiện một tác vụ quan trọng.
+
+
+***********************************************************************
+>>>>>THUỘC TÍNH
+1/ Title (Tiêu đề): 
+ => Tiêu đề của AlertDialog.
+  vd:
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+       // xây dựng các title và nội dung bên trong
+       builder.setTitle("One Button");
+
+ 2/ Message (Thông điệp): 
+  => Nội dung hoặc thông điệp cần hiển thị cho người dùng.
+  vd:
+          builder.setMessage("Are you happy?");
+
+ 3/ Icon (Biểu tượng): 
+  => Biểu tượng hiển thị cùng với tiêu đề và nội dung của hộp thoại.
+   vd:
+          builder.setIcon(R.drawable.alert);
+          <=> nếu muốn lấy ảnh hệ thống thì dùng
+          builder.setIcon(android.R.drawwable.<tên các icon hệ thống>);
+
+ 4/ PositiveButton (Nút tích cực): 
+  => Nút chứa hành động tích cực, chẳng hạn như "Đồng ý" hoặc "OK".
+  a/setPositiveButton: biểu thị ok
+    vd:
+        builder.setPositiveButton("Ok", (dialogInterface, i) -> {
+                showToast("OK");
+                dialogInterface.cancel();
+            });
+          -> nhấn ok trên alert dialog thì hiện ra Toast là ok
+
+        
+ 5/ NegativeButton (Nút tiêu cực): 
+  => Nút chứa hành động tiêu cực, chẳng hạn như "Hủy" hoặc "Không".
+  a/ setNegativeButton: hiển thị No
+    vd:
+        builder.setNegativeButton("No",(dialogInterface, i) -> {
+                showToast("No");
+                dialogInterface.cancel();
+            });
+          -> nhấn no trên alert dialog thì Toast hiện no 
+
+ 6/ NeutralButton (Nút trung lập):
+  => Nút chứa hành động trung lập, thường được sử dụng cho các tùy chọn thêm:
+  Cancelable (Có thể hủy): Xác định xem người dùng có thể bấm nút Back để đóng 
+  hộp thoại hay không.
+   a/ setNeutralButton: nút cancel
+     vd:
+       builder.setNeutralButton("Cancel",(dialogInterface, i) -> {
+                showToast("Cancel");
+                dialogInterface.cancel();
+            });
+            ==> nhấn cacel thì hủy thoát khỏi alert mà không có thực hiện yêu cầu từ alert dialog
+ 
+
+************************************************************************
+>>>>>CODE DEMO
+
+  ...........
+  public class MainActivity extends AppCompatActivity {
+    private Button btn1, btn2, btn3, btn_Items, btn_form, btn_Single, btnMultiChoiceItems;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // gọi class init
+        init();
+
+        // sự kiện đầu tiền với alert đầy đủ và giải thích chi tiết nhất tham khảo
+        // Sự kiện buton1 (xử lý sk kiểu Listener Anonymous _ viêt cách lambda)
+        btn1.setOnClickListener(view->{
+            // khởi tạo alertdialog và builder của alert
+            final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+            // xây dựng các title và ội dung bên trong
+            builder.setTitle("One Button");
+            builder.setMessage("Are you happy?");
+
+            // set icon cho alert dialog
+            builder.setIcon(R.drawable.alert);
+            // xử lý sự kiện khi nhấn nút ok nó sẽ hiển ra thông báo ok
+            builder.setPositiveButton("Ok", (dialogInterface, i) -> {
+                showToast("OK");
+                dialogInterface.cancel();
+            });
+            // thuộc tính setCaceledOnTouchOutside() có chức năng hủy alert dialog khi nhấn ở vùng bên ngoài hộp thoại
+            AlertDialog alertDialog = builder.create();
+            alertDialog.setCanceledOnTouchOutside(true);
+            alertDialog.show();
+        });
+        .....
+
+
+        (xem chi tiết bên SourceCodemau/AlertDialog)
+
+

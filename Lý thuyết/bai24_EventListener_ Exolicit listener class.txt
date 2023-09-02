@@ -1,0 +1,112 @@
+**************************XỬ LÝ SỰ KIỆN VỚI CÁCH THỨC XÂY DƯNG CLASS RIÊNG BIỆT************************
+>>>>>KHÁI NIỆM
+- Explicit Listener Class (cách thức xử lý sự kiện bằng cách tạo một class xử lý sự kiện riêng biệt và gội lại nó)
+là một lớp riêng biệt được tạo ra để triển khai một giao diện lắng nghe (listener interface) cụ thể. Giao diện lắng
+nghe là một giao diện định nghĩa các phương thức xử lý sự kiện. Khi sử dụng Explicit Listener Class, bạn cần triển
+khai các phương thức của giao diện lắng nghe trong lớp của mình.
+
+===> Khái niệm này thường được sử dụng khi bạn cần xử lý nhiều loại sự kiện khác nhau từ các thành phần khác
+nhau và muốn giữ mã xử lý sự kiện riêng biệt, dễ đọc và dễ bảo trì.
+
+    ++ Ví dụ:
+     giả sử bạn có một Activity và muốn xử lý sự kiện nhấn nút Button và sự kiện chọn item trong ListView. 
+     Bạn có thể tạo ra hai Explicit Listener Class riêng biệt cho từng loại sự kiện:
+
+
+
+
+********************************************************************************
+>>>>>TRIỂN KHAI CODE
+ ## Bước 01: tạo layout với các button kèm id button khi nhấn nút đó nó sẽ hiển thi nội dụng tương ứng của button đó
+ ##Bước 02: file Activity:
+  -> xử lý code cho kịch bạn java với Activity
+
+                package com.example.kienthuctonghopactivity;
+
+                import androidx.appcompat.app.AppCompatActivity;
+
+                import android.os.Bundle;
+                import android.widget.Button;
+                import android.widget.TextView;
+
+                import EventListener.*;
+
+                public class ExplicitListenerClass extends AppCompatActivity {
+                    private Button btn1, btn2, btn3, btn4, btn5;
+
+                    @Override
+                    protected void onCreate(Bundle savedInstanceState) {
+                        super.onCreate(savedInstanceState);
+                        setContentView(R.layout.activity_explicit_listener_class);
+
+                        init();
+
+                     // xử lý sự kiện bằng cách gọi đến class riêng biệt xử lý sự kiện do lập trình viên tự viết
+                    // lưu ý cách thức này thay vì viết trong cùng 1 Activity thì ta tách class xử lý ra riêng và gọi lại nó
+                        btn1.setOnClickListener(new event_class());
+                        btn2.setOnClickListener(new event_class());
+                        btn3.setOnClickListener(new event_class());
+                        btn4.setOnClickListener(new event_class());
+                        btn5.setOnClickListener(new event_class());
+                    }
+
+                    // init() ánh xạ các id button
+                    public void init(){
+                        btn1 =(Button) findViewById(R.id.btn1);
+                        btn2 =(Button) findViewById(R.id.btn2);
+                        btn3 =(Button) findViewById(R.id.btn3);
+                        btn4 =(Button) findViewById(R.id.btn4);
+                        btn5 =(Button) findViewById(R.id.btn5);
+                    }
+                }
+
+
+  ## Bước 03: tạo file class event_class(): để xử lý sự kiện
+   => đây là mình xây dựng cách thức xử lý sự kiện riêng biệt cho class riêng biệt để dễ bảo trì
+
+                    
+                  package EventListener;
+
+                  import android.view.View;
+                  import android.widget.Button;
+                  import android.widget.TextView;
+
+                  import com.example.kienthuctonghopactivity.R;
+
+                  public class event_class implements View.OnClickListener {
+                      @Override
+                      public void onClick(View view) {
+                          // khởi tạo Textview để ánh xạ id txtView bên layout
+                          TextView txtView = (TextView) view.getRootView().findViewById(R.id.txtview);
+                          Button btn1 = (Button) view.getRootView().findViewById(R.id.btn1);
+                          Button btn2 = (Button) view.getRootView().findViewById(R.id.btn2);
+                          Button btn3 = (Button) view.getRootView().findViewById(R.id.btn3);
+                          Button btn4 = (Button) view.getRootView().findViewById(R.id.btn4);
+                          Button btn5 = (Button) view.getRootView().findViewById(R.id.btn5);
+
+                          // sử dụng if-else để xử lý sự kiện
+                          // dùng if-else để xử lý
+                          if((view.getId())== R.id.btn1){
+                              txtView.setText("Inline Listener");
+                          }else if (view.getId() == R.id.btn2) {
+                              txtView.setText("Inline Anonymous Listener");
+                          } else if (view.getId() == R.id.btn3) {
+                              txtView.setText("Activity Listener");
+                          } else if (view.getId() == R.id.btn4) {
+                              txtView.setText("Listener Variable");
+                          } else if (view.getId() == R.id.btn5) {
+                              txtView.setText("Excplicit Listener class");
+                          }
+                      }
+
+                }
+
+    **********NOTE***********            
+     => khi xây dựng class riêng để xử lý chức năng thì việc ánh xạ các id bên layout dễ gặp lỗi 
+     => do đó cần khai báo với view.getRootView() để nó hiểu và truy xuất đến đúng file layout gốc
+     để ánh xạ đc các id tương ứng
+
+         vd:
+               TextView txtView = (TextView) view.getRootView().findViewById(R.id.txtview);
+
+            

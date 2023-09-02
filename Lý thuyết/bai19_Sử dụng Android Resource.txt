@@ -1,0 +1,88 @@
+**************************TIỀM HIỂU VỀ ANDROID RESOURCE*************************
+>>>>KHÁI NIỆM
+ - Trong lập trình Android, Android Resource là các tài nguyên (resources) được sử dụng trong ứng dụng của bạn, 
+ như hình ảnh, âm thanh, văn bản, màu sắc, kiểu chữ, cấu trúc giao diện người dùng và nhiều thứ khác.
+ - Các tài nguyên này được định nghĩa trong thư mục res của dự án Android. Việc sử dụng Android Resource giúp
+ bạn tách biệt các tài nguyên từ mã nguồn ứng dụng, giúp quản lý và phát triển ứng dụng dễ dàng hơn. 
+
+
+
+*****************************************************************************************
+>>>>>CÁC THUỘC TÍNH
+ 1/ @string/: 
+  => Dùng để truy cập vào các chuỗi (String) được định nghĩa trong res/values/strings.xml.
+         vd:
+            <resources>
+              <string name="app_name">TongHop</string>
+              <string name="button01">Click1</string>
+              <string name="button2">Click2</string>
+            </resource>
+
+ 2/ @color/:
+  => Dùng để truy cập vào các màu sắc (Color) được định nghĩa trong res/values/colors.xml.
+      vd:
+        <resources>
+            <color name="black">#FF000000</color>
+            <color name="white">#FFFFFFFF</color>
+        </resource>    
+            
+3/ @drawable/: 
+ => Dùng để truy cập vào các hình ảnh (Drawable) được định nghĩa trong res/drawable/.
+      vd: tạo mục shape cho các khối button
+
+        ## background.xml
+
+           <selector xmlns:android="http://schemas.android.com/apk/res/android">
+           /* xét hình dáng là vuông và màu sắc, ?attr/colorPrimary là truy xuất đến màu gốc đc thiết lặp
+           bên file themes.xml của values*/
+               <item>
+                    <shape android:shape="rectangle">
+                        <!--dẫn màu gốc bên themes qua-->
+                        <solid android:color="?attr/colorPrimary" />
+                        <!--tạo độ bo viền tròn  cho button-->
+                        <corners android:radius="20dp"/>
+                    </shape>
+                </item>
+            </selector>
+
+       ## mục themes.xml
+             
+        <resources xmlns:tools="http://schemas.android.com/tools">
+            <!-- Base application theme. -->
+            <style name="Base.Theme.KienthuctonghopActivity" parent="Theme.AppCompat.Light.NoActionBar">
+                <!-- xét màu gốc cho project -->
+                <item name="colorPrimary">@color/green</item>
+            </style>
+            ....
+       <.resource>     
+
+        
+ 4/ @layout/: 
+  => Dùng để truy cập vào các tệp layout (Layout) được định nghĩa trong res/layout/.
+  ====> các mục giao diện sẽ nằm đây
+
+ 5/ @dimen/:
+  => Dùng để truy cập vào các kích thước (Dimension) được định nghĩa trong res/values/dimens.xml.
+    vd:
+       <resources>
+          <dimen name="padding">10</dimen>
+          <dimen name="margin_top">150</dimen>
+       </resource>
+
+ 6/ @style/: 
+  => Dùng để truy cập vào các kiểu giao diện (Style) được định nghĩa trong res/values/styles.xml.
+
+ 7/ @array/:
+  => Dùng để truy cập vào các mảng (Array) được định nghĩa trong res/values/arrays.xml.
+
+ 8/ @id/: 
+   => Dùng để truy cập vào các id (ID) của các phần tử giao diện đã định nghĩa trong tệp layout.
+
+
+
+
+
+*****************************************************************************************
+>>>>>CODE TRIỂN KHAI
+
+   

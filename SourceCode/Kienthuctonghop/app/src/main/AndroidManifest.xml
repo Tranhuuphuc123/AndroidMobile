@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KienthuctonghopActivity"
+        tools:targetApi="31">
+        <!--  thiết lặp bàn phím ảo trong manifest
+         android:windowSoftInputMode="stateAlwaysVisible|adjustResize" chế độ bàn phím ảo
+         vd:
+              android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+              ++ trong đó:
+               > stateAlwaysVisible: thiết lặp bật baàn phím ảo
+               > adjustRezie: thiết lặp co giản bàn phím ảo tránh che mất nội dung kề nó
+        -->
+        <activity
+            android:name=".VirtualKeyboardActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TextVidu"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Baitapungdung_Apploihayydep"
+            android:exported="true" />
+        <activity
+            android:name=".ExplicitListenerClass"
+            android:exported="true" />
+        <activity
+            android:name=".VariableListenerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityInListener"
+            android:exported="true" />
+        <activity
+            android:name=".InlineAnonymousListenerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".InlineListenerActivity"
+            android:exported="true"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".SwitchActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ToggleButtonActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".Baitapungdung1Activity"
+            android:exported="true"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ButtonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditTextActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WidgetTextviewActivity"
+            android:exported="false" /> <!-- xoay màn hình vơới Android Screen Orientation -->
+        <activity
+            android:name=".ScreenOrientationActivity"
+            android:exported="false"
+            android:label="@string/app_name" /> <!-- xây ựng các ứng dụng của tablelayout -->
+        <activity
+            android:name=".TablelayoutActivity"
+            android:exported="false"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".Chiabocuc2Activity"
+            android:exported="false"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".ChiabocucActivity"
+            android:exported="false"
+            android:label="@string/app_name" /> <!-- Cấu hình GravityActivity -->
+        <activity
+            android:name=".GravityActivity"
+            android:exported="false" /> <!-- cấu hình LinearlayoutActivity.java -->
+        <activity
+            android:name=".LinearLayoutActivity"
+            android:exported="false"
+            android:label="@string/app_name" /> <!-- cấu hình activity: FramelayoutActivity -->
+        <activity
+            android:name=".FrameLayoutActivity"
+            android:exported="false"
+            android:label="@string/app_name" /> <!-- cấu hình activity: lifeCycleActivity.java -->
+        <activity
+            android:name=".LifeCycleActivity"
+            android:exported="false"
+            android:label="@string/app_name" /> <!-- activity: debudActivity.java -->
+        <activity
+            android:name=".DebugActivity"
+            android:exported="false"
+            android:label="@string/app_name" /> <!-- cấu hình activity cho MainActivity.java -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" /> <!-- cấu hình activity cho AndroidActivity.java -->
+        <activity
+            android:name=".AndroidActivity"
+            android:exported="false"
+            android:label="@string/app_name" />
+    </application>
+
+</manifest>

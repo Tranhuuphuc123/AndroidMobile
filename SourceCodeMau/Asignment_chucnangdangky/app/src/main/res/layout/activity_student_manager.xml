@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentManagerActivity"
+    android:padding="10dp">
+
+
+   <LinearLayout
+       android:id="@+id/linear1"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       tools:ignore="MissingConstraints"
+       android:orientation="horizontal"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent">
+
+       <TextView
+           android:id="@+id/txt_rollno"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:text="Rollno: "
+           android:textSize="20dp"
+           android:layout_weight="40"/>
+
+       <EditText
+           android:id="@+id/edit_rollno"
+           android:layout_width="0dp"
+           android:layout_height="40dp"
+           android:layout_weight="60"
+           android:background="@drawable/border_edit"
+           android:hint="enter the Rollno"/>
+   </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linear1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:weightSum="100"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/txt_StudnetName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Student Name: "
+            android:textSize="20dp"
+            android:layout_weight="40"/>
+
+        <EditText
+            android:id="@+id/edit_StudentName"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="60"
+            android:background="@drawable/border_edit"
+            android:hint="enter the Student name"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linear2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:weightSum="100"
+        android:layout_marginTop="10dp">
+
+
+       <RadioGroup
+           android:id="@+id/radiogroup_select"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="140dp"
+           android:orientation="horizontal">
+           <RadioButton
+               android:id="@+id/radioButton_short"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="short-term"
+               android:checked="true"/>
+           <RadioButton
+               android:id="@+id/radioButton_long"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="long-term"
+               android:checked="false" />
+       </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/linear3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txt_joindate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Join Date: "
+            android:textSize="18dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/txt_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22/09/1995"
+            android:textSize="18dp"
+            android:layout_marginLeft="20dp"/>
+
+        <Button
+            android:id="@+id/btn_date"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="DATE"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="40dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_hide_keyboard"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear3"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="55dp"
+        android:text="hide"
+        android:textSize="15dp"
+        android:background="@drawable/rectangle"/>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_hide_keyboard"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:text="ADD"
+        android:background="@drawable/rectangle" />
+
+
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,93 @@
+*************************ỨNG DỤNG SWITCH TRONG TOGGLE BUTTON**********************************
+>>>>KHÁI NIỆM:
+ - Trong Android, switch là một cấu trúc điều khiển (control flow) dùng để thực hiện các câu lệnh theo
+ một trong nhiều giá trị của biểu thức điều kiện. switch thường được sử dụng khi bạn cần xử lý một số 
+ trạng thái hoặc giá trị cụ thể và thực hiện các hành động khác nhau tùy thuộc vào giá trị hiện tại của 
+ biểu thức điều kiện.
+
+>>>>>CÁC THUỘC TÍNH:
+ => dùng chung các thuộc tính như toggleButton
+
+>>>>>> CODE TRIỂN KHAI
+
+ ## File layout
+
+      <?xml version="1.0" encoding="utf-8"?>
+      <LinearLayout
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          tools:context=".SwitchActivity"
+          android:padding="20dp"
+          android:gravity="center_vertical">
+
+          <!--dùng switch vaof toggle button để tạo hệ thông nút bật tắt liền kề-->
+          <ToggleButton
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:checked="false"
+              android:textOn="Bật"
+              android:textOff="Tắt"
+              android:id="@+id/tgl_btn"
+              android:layout_marginStart="40dp"
+              android:backgroundTint="@color/green"/>
+
+          <!--sử dụng Switch để tạo nút bật tắt trong cùng một toggleButton-->
+          <Switch
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Công tắt"
+              android:id="@+id/sw"
+              android:layout_marginStart="5dp"
+              android:checked="true"
+              android:textOff="Tắt"
+              android:textOn="Bật"/>
+
+      </LinearLayout>
+
+ ## File Activity java
+    
+
+      package com.example.kienthuctonghopactivity;
+
+      import androidx.appcompat.app.AppCompatActivity;
+
+      import android.os.Bundle;
+      import android.widget.Switch;
+      import android.widget.Toast;
+      import android.widget.ToggleButton;
+
+      public class SwitchActivity extends AppCompatActivity {
+
+           private Switch swbutton;
+           private ToggleButton toggleButton;
+          @Override
+          protected void onCreate(Bundle savedInstanceState) {
+              super.onCreate(savedInstanceState);
+              setContentView(R.layout.activity_switch);
+
+              // liên kết key id ben layout
+              swbutton = (Switch) findViewById(R.id.sw);
+              toggleButton=(ToggleButton) findViewById(R.id.tgl_btn);
+
+
+              // xử lý sự kiện-> kiêểu viết lambada
+              swbutton.setOnCheckedChangeListener((buttonView, isCheck) ->{
+                      if(isCheck){
+                          toggleButton.setChecked(true);
+                          showToast("Bật nha");
+                      }else{
+                          toggleButton.setChecked(false);
+                          showToast("tắt rồi đó");
+                      }
+              });
+          }
+
+          // taạo Toast
+          public void showToast(String msg){
+              Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+          }
+      }
+
+    

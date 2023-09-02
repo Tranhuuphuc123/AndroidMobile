@@ -1,0 +1,98 @@
+****************TƯƠNG TÁC GIỮA ACTIVITY VỚI LAYOUT************
+>>>>>KHÁI NIỆM:
+ - Đây là code giao diện xây dựng bên activity_main.xml trong resorce(res)/ layout:
+
+        <?xml version="1.0" encoding="utf-8"?>
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:id="@+id/key1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        ==> như ta thấy thiết lập trong giao diện là text:'hello world!'
+        ==> vấn đề đặt ra là làm cách nào để lk các tp bên layout này qua file java mainActivity(tức code 
+        controller kịch bản cho project app mobile)
+
+
+
+**********************************************************************************************************************
+>>>>> CÁCH LIÊN KẾT LAYOUT QUA ACTIVITY JAVA
+ - đầu tiên ta đặt id cho TextView của activity_main.xml
+               ...
+                 android:id="@+id/key1"
+
+ - Trong code của file java: mainActivity.java xử lý như sau:
+
+            package com.example.ontap;
+
+            import androidx.appcompat.app.AppCompatActivity;
+
+            import android.os.Bundle;
+            import android.widget.TextView;
+
+            public class MainActivity extends AppCompatActivity {
+
+                // đặt tp TextView bên file java
+                TextView tuongtac;
+                @Override
+                protected void onCreate(Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    // liên kết với R: res(resource)/layout/activity_main.xml)
+                    setContentView(R.layout.activity_main);
+
+                    // liên kết activity với layout thông qua id đc thiết lặp bên layout xml
+                    tuongtac = (TextView) findViewById(R.id.key1);
+                    // set nội dung thay đổi để thể hiện sự tương tác của file java với layout bên kia
+                    tuongtac.setText("Tương tác Activity với layout");
+                }
+            }
+
+
+            ==> lúc này ta chạy code và build ra đc nội dung vừa thay đổi đc bên trong file java chứ không phải bên 
+            layout: activity_main.xml
+
+
+
+
+
+***********************************************************************************************************
+>>>>>> THAY ĐỔI LAYOUT MẶC ĐỊNH
+ -> Khi tạo project App android mobile sẽ sinh ra một file Mainactivity.java
+ một file layout activity_Main.xml mặc định
+ ==> vậy mún tạo thêm các layout khác thì làm sao để mà chạy đc
+ ===> giải quyết như sau:
+   - Bước 01: tạo một file layout mới:
+     + layout > r-click > new > new layout Resource file > (tạo file layout mới)
+     + vd: ta tạo ra file layout mới tên là activity_Android1.xml
+
+   - Bước 02: ánh xạ liên kết đến file layout chỉ định trong Mainactivity.java
+     + code:
+          .....
+            public class MainActivity extends AppCompatActivity {
+
+               // TextView tuongtac;
+                @Override
+                protected void onCreate(Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    /*Lưu ý setContentView chính là phương thức liên kết ánh xạ tới các layout
+                    *      vd: ta có 2 layout khác nhau vậy thì file mainactivity.java làm sao phần biết
+                    *    để chạy đc cái layout mình cần chạy -> thông qua setContentView liên kết đến R(res(resource))
+                    * liên kết đến layout-> liên kết đến file layout activity_....xml cần chạy
+                    *
+                    * */
+                    setContentView(R.layout.acitivity_android1);                      
+               }
+            }

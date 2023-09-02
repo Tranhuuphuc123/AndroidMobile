@@ -1,0 +1,63 @@
+*********************ANDROID SCREEN ORIENTATION(ĐỊNH HƯỚNG MÀN HÌNH ANDROID)***************************
+>>>>KHÁI NIỆM:
+ - Trong Android mobile, "Android Screen Orientation" (Định hướng màn hình Android) là tính năng cho phép màn hình
+ của điện thoại thông minh hoặc máy tính bảng tự động thay đổi hướng hiển thị khi thiết bị được xoay hoặc đổi vị trí
+ từ hướng dọc sang hướng ngang và ngược lại. Khi người dùng xoay hoặc thay đổi vị trí của thiết bị, hệ điều hành
+ Android sẽ tự động điều chỉnh giao diện người dùng để phù hợp với hướng màn hình mới. Điều này giúp cải thiện trải 
+ nghiệm người dùng và tối ưu hóa không gian màn hình. 
+
+
+
+
+
+***************************************************************************************************************
+>>>>>CÁC BƯỚC THỰC HIỆN
+ ## Bước 01:
+  ******dùng thuộc tính android:screenOrientation******
+   -> để chỉ định hướng xoay màn hình
+   -> các giá trị của thuộc tính trên
+    + android:screenOrientation = "portrait": chiều thẳng đứng
+    + android:screenOrientation="landscape": chiều nằm ngang
+    + android:screenOrientation="sensor": Cho phép xoay tự động theo hướng của thiết bị (dọc hoặc ngang).
+    + android:screenOrientation="user": Cho phép xoay tự động theo ý muốn của người dùng (có thể khóa ở hướng cụ thể).
+
+   ==> lưu ý:
+    -> ta thiết lặp các thuộc tính android:Orientation="" trong mục cấu hình AndroidManifest.xml
+    -> cấu hình như sau:
+
+           <activity
+                android:name=".ScreenOrientationActivity"
+                android:exported="true"
+                android:label="@string/app_name"
+                android:screenOrientation="landscape">
+
+                <!-- Cặp Inter-filter đóng vai trò thiết lặp chỉ định activity nào đc chạy đầu tiên -->
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+
+    ===> Lưu ý ta có thể bỏ bước này cũng đc, miễn sao bước 03 là cần thiết     
+
+   
+
+  ## Bước 02: Tạo file layout bình thường(là file thiết kế giao diện layout)
+
+  ## Bước 03: tạo file sao bản y sao layout ở bước 02
+   -> 1/ ở mục res/layout
+   -> r-click layout/new/layout Resources file
+   -> đặt tên file layout y như tên layout ở bước 02
+   -> ỏ mục Available qualifiers: ta chọn Orientation/ thiết lập các dạng hiển thị thuộc tính của android:Orientation
+     + Portrait
+     + Landcade
+     + Sensor
+     + user
+     .....
+   -> ở file này ta tiến hành thiết kế bình thường  
+   ===> lúc này ở ngay file layout cũ ở bước 2 sẽ tự xuất hiện thêm một layout (<name của thuộc tính tương ứng>)
+
+
+   =====> khi build project thì ta xoay màn hình chiều nào sẽ đc ứng dụng tương ứng trc khi thiết kế
+

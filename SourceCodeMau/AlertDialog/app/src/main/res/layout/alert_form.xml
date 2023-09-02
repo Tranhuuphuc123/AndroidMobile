@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/txtName_alertForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:text="BAKERY ORDER FORM"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"/>
+
+    <!--android:inputType="textPersonName" là một thuộc tính được sử dụng trong các phần tử
+     giao diện người dùng trong Android để xác định loại dữ liệu đầu vào mà phần tử đó nên chấp nhận.
+     =>  Cụ thể, textPersonName là một hằng số được sử dụng để chỉ định rằng phần tử đầu vào này nên
+      chấp nhận dữ liệu là tên người.-->
+    <EditText
+        android:id="@+id/edit_alertForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtName_alertForm"
+        android:hint="Type your fullName here"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:inputType="textPersonName"/>
+
+    <TextView
+        android:id="@+id/txt_filling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_alertForm"
+        android:layout_marginLeft="10dp"
+        android:text="Filling"
+        android:textSize="20dp"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxChocolate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/txt_filling"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="15dp"
+        android:text="Chocolate"
+        android:textSize="15dp"
+        android:checked="true"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxStrawberry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxChocolate"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="15dp"
+        android:text="Strawberry"
+        android:textSize="15dp"
+        android:checked="false"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxStrawberry"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/txt_Shape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:text="Shape of Cake"
+            android:textSize="20dp"/>
+
+        <RadioButton
+            android:id="@+id/radio_Square"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Square"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/radio_Round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Square"
+            android:checked="false"/>
+        <RadioButton
+            android:id="@+id/radio_Hearts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hearts"
+            android:checked="false"/>
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
