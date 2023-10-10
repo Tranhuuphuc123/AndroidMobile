@@ -10,6 +10,8 @@
  ===> tóm lại lớp Intent là một lớp xử chuyển đổi giao diện giữa các 
  layout, truyền nhận dữ liệu xử lý giữa các Activity, Service...
 
+
+
 ****************************************************************************
 >>>>KHỞI TẠO MỘT INTENT
  - Khởi tạo thuộc tính Intent
@@ -26,10 +28,220 @@
 
 
 
+*****************************************************************************
+>>> CÁCH TRUYỀN NHẬN DỮ LIỆU THÔNG QUA CÁC ACTIVITY BASIC_SEND DATA
+ - bài toán kiến thức này sau này vẫn dụng nhiều trong cắc list view
+ dùng để truyền nhận các value thông qua key values của thuộc tính putextra
+   
+   ## demo mẫu code
+    => bỏ qua phân flayout tự thiết kế
+    => phần main:
+         vd:
+            // ánh xạ id
+            btn_intent = (Button) findViewById(R.id.btn_intent_main);
+            btn_intent.setOnClickListener(view->{
+                Intent intent = new Intent(MainActivity.this, childActivity.class);
+
+                // tiến hành gửi nhận dữ liệu với thuộc tính putextra
+                intent.putExtra("param1", "Lập trình Android mobile native java");
+                intent.putExtra("param2",100);
+
+                startActivity(intent);
+            });
+
+
+    => phần lớp con: dl nhận và đỗ vào hiển thị ở text view,... cũng có thể 
+    là listview, recycleview....
+           vd:
+             txt_rs = (TextView) findViewById(R.id.txt_rs);
+
+              // thiết lặp nhận dữ liệu bên class khác gửi qua -> và đỗ value cho txt_rs hiển thị ra
+              String item = getIntent().getStringExtra("param1");
+              // lưu ý 300 là tham số default theo mặc định phải có thêm ts default => nếu value ben
+              /*hàm khác không chuyển đc thì nó sẽ hiển thị value 3:w
+              00 này*/
+              int num = getIntent().getIntExtra("param2",300);
+              txt_rs.setText(item + ' ' + num);
+
+===> ngoài ra ta cũng có thể tạo một model khởi tạo nó trong onCreate truyền các tham số tương ứng
+và sau đó ta tiến hành dùng putExtra gửi value cùng key qua cho một class khác.
+
+
+
+
+
+**************************************************************************
+>>>> CÁCH TRUYỀN NHẬN DỮ LIỆU THÔNG QUA CÁC ACTIVITY BASIC_BUNDLE
+ - Cũng tương tự nhưng ở cách thức này ta có thêm khái niệm Bundle
+ - Bundle là gì: 
+   -> Bundle trong Android là một cấu trúc dữ liệu được sử dụng để đóng gói và chuyển dữ liệu giữa các
+   thành phần của ứng dụng như hoạt động (Activity), fragment và service. Bundle thường được sử dụng
+   để truyền dữ liệu giữa các hoạt động hoặc khi tạo hoặc tái tạo các fragmen
+   -> ưu điểm là thay vì phải thiết lặp từng value với các kiểu dl khác nhau rồi gửi qua một cách riêng lẻ
+   thì bundle giúp ta đống gói nó lại, giống như nén file xip lại rồi gửi đi thay vì phải gửi từng file 
+   một cách thủ công và mất thười gian.
+
+   <===> Các cách triển khai một bundle trông truyền nhận dữ liệu như sau:
+
+    # cách tạo bundle:
+
+                 Bundle bundle = new Bundle();
+
+    # cách đóng gói dữ liệu vào bundle
+        vd:
+             Bundle bundle = new Bundle();
+             bundle.putString("param1", "Trung tâm Aptech");
+             bundle.putInt("param2", 30);
+             bundle.putSerializable("bookInfo", book );
+
+    # cách chuyển bundle cho thành phần khác
+        vd:
+           intent.putExtra("myBundle",bundle);
+
+    # class ghi nhận bundle triển khai truyền qua
+       vd:
+          // xử lý nhận dữ liệu với bundle
+          Bundle bundle = intent_b.getBundleExtra("myBundle");
+          String name = bundle.getString("param1");
+          int num = bundle.getInt("param2");
+          Book bookInfo =(Book) bundle.getSerializable("bookInfo");
+
+          txt_rs.setText(name + "-" + num + "-" + bookInfo.getName() + "-"
+                  + bookInfo.getName() + "-" + bookInfo.getPrice());
+
+ **********************************************************************************************
+  ===>********** đây là cách khuyến khích đc sử dụng trong truyền nhận dữ liệu *************<===
+ **********************************************************************************************
+
+
+
+
+
 ****************************************************************************
 >>>>>THUỘC TÍNH
+ + Intent: lớp chuyển đổi
+ + putExtra: thiết lặp cặp key values để truyền nhận dữ liệu thông qua activity basic 
+ + Serializable 
+   ++ 1/ Chức năng chính của lớp Serializable là cho phép một đối tượng có thể được chuyển đổi
+ thành chuỗi byte và ngược lại
+
+   ++ 2/  Một khi một đối tượng được đánh dấu là Serializable, nó có thể được truyền đi qua mạng,
+ lưu trữ vào tệp, hoặc chuyển đổi thành chuỗi byte để lưu trữ hoặc truyền tải dữ liệu.*/
 
 
 
-*****************************************************************************
->>>>>
+
+
+******************************************************************************************************
+>>>>CODE DEMO CHO TẤT CẢ CACSTRG HỢP
+ ## layout: xem lại bên phần thực hành chuyển giao diện
+ ## mainActivity.class
+
+        package com.example.chuyengiaodien_tonghop;
+
+        import androidx.appcompat.app.AppCompatActivity;
+
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.widget.Button;
+
+        import com.example.chuyengiaodien_tonghop.model.Book;
+
+        import java.io.Serializable;
+
+        public class MainActivity extends AppCompatActivity {
+            private Button btn_intent;
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+
+                // ánh xạ id
+                btn_intent = (Button) findViewById(R.id.btn_intent_main);
+                btn_intent.setOnClickListener(view->{
+                    Intent intent = new Intent(MainActivity.this, childActivity.class);
+
+                    // tiến hành gửi nhận dữ liệu với thuộc tính putextra
+        //            intent.putExtra("param1", "Lập trình Android mobile native java");
+        //            intent.putExtra("param2",100);
+        //
+        //            // gọi model Book vào và gửi dữ liệu nó qua cho class child
+                      Book book = new Book("B01", "Java language", 15.0);
+        //            intent.putExtra("bookInfo",  book);
+
+                    // cách sử dụng bundle để nhóm các value trên thành một gói
+                   Bundle bundle = new Bundle();
+                   bundle.putString("param1", "Trung tâm Aptech");
+                   bundle.putInt("param2", 30);
+                   bundle.putSerializable("bookInfo", book );
+                   // tiến hành gửi bundle đi
+                    intent.putExtra("myBundle",bundle);
+
+                    startActivity(intent);
+                });
+            }
+        }
+
+
+    ## childActiviy.class
+
+            package com.example.chuyengiaodien_tonghop;
+
+            import androidx.appcompat.app.AppCompatActivity;
+
+            import android.content.Intent;
+            import android.os.Bundle;
+            import android.widget.Button;
+            import android.widget.TextView;
+
+            import com.example.chuyengiaodien_tonghop.model.Book;
+
+            public class childActivity extends AppCompatActivity {
+                private Button btn_child;
+                private TextView txt_rs;
+
+                @Override
+                protected void onCreate(Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                    setContentView(R.layout.activity_child);
+
+                    // ánh xạ id
+                    btn_child= (Button) findViewById(R.id.btn_intent_child);
+                    txt_rs = (TextView) findViewById(R.id.txt_rs);
+                    Intent intent_b = getIntent();
+
+                   /*cách xử lý thông thường*/
+
+                    // thiết lặp nhận dữ liệu bên class khác gửi qua -> và đỗ value cho txt_rs hiển thị ra
+               //     String item = getIntent().getStringExtra("param1");
+                    // lưu ý 300 là tham số default theo mặc định phải có thêm ts default => nếu value ben
+                    /*hàm khác không chuyển đc thì nó sẽ hiển thị value 300 này*/
+               //      int num = getIntent().getIntExtra("param2",300);
+                    // nhận dl của class model book
+                //    Book book = (Book) getIntent().getSerializableExtra("bookInfo");
+
+            //        txt_rs.setText(item + "-" + num + "-" + book.getName() + "-"
+            //                + book.getName() + "-" + book.getPrice());
+
+
+
+                    //* xử lý nhận dữ liệu với bundle*/
+                    Bundle bundle = intent_b.getBundleExtra("myBundle");
+                    String name = bundle.getString("param1");
+                    int num = bundle.getInt("param2");
+                    Book bookInfo =(Book) bundle.getSerializable("bookInfo");
+
+                    txt_rs.setText(name + "-" + num + "-" + bookInfo.getName() + "-"
+                            + bookInfo.getName() + "-" + bookInfo.getPrice());
+
+
+                    // xử lý sự kiện chuyển giao diện với intent
+                    btn_child.setOnClickListener(view->{
+                        Intent intent = new Intent(childActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    });
+                }
+            }
+
+

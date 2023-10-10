@@ -95,7 +95,8 @@
        ++ center_vertical(căn giữa mà theo chiều dọc)
 
    11/ android: layout_gravity
-    => các thuộc tính vị trí layout_gravity cũng tương tự như gravity:
+    => các thuộc tính vị trí layout_gravity cũng tương tự như gravity: Nhưng nó căn chỉnh vị trí
+    các View với nhau trong một ViewGroup lớn hơn
      + top, bottom, start(trái),, end(phải)
      + center: giữa trung tâm
        ++ center_horizontal(căn giữa mà theo chiều ngang)

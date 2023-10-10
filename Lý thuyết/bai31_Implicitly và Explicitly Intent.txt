@@ -1,0 +1,114 @@
+********************IMPLICITLY VÀ EXPLICITLY INTENT*****************************
+>>>>>KHÁI NIỆM:
+ - Implicit Intent và Explicit Intent là hai cách khác nhau để gửi và xử lý các yêu cầu
+ trong ứng dụng Android. Dưới đây là sự khác biệt giữa chúng về khái niệm và các thuộc 
+ tính liên quan:
+
+ ## Implicit Intent:
+ - Implicit Intent là một loại Intent trong Android được sử dụng khi bạn muốn thực hiện một hành động
+ mà không cần chỉ định một thành phần (component) cụ thể để xử lý nó.
+
+ - Implicit Intent được sử dụng khi bạn muốn khởi động một hành động và cho phép hệ thống Android xác
+ định ứng dụng hoặc thành phần nào sẽ xử lý nó dựa trên các tiêu chí như loại dữ liệu, hành động (action),
+ loại MIME, và các thông tin khác trong Intent.
+
+
+
+ ## Explicit Intent:
+  - Explicit Intent là một loại Intent trong Android được sử dụng khi bạn muốn chỉ định rõ thành
+  phần cụ thể (Activity, Service, BroadcastReceiver) trong ứng dụng của bạn để xử lý yêu cầu.
+ -> Trong Explicit Intent, bạn cung cấp tên gói ứng dụng và tên thành phần cụ thể mà bạn muốn gọi.
+ ===> về phàn này chính là cách thông thường hay làm đấy:
+  vd: khi tao sự kiện thì cần ánh xạ id ở lớp init,tạo các properties private Button, private TextView..
+  chỉ định rõ ràng ra các sự kiện liên quan một cách rành mạch
+
+
+
+  ***NOTE***
+  ==> Tóm lại, sự khác biệt chính giữa Implicit Intent và Explicit Intent là trong Implicit Intent,
+  bạn để hệ thống Android xác định ứng dụng hoặc thành phần nào sẽ xử lý Intent dựa trên thông tin 
+  chung, trong khi trong Explicit Intent, bạn chỉ định rõ thành phần cụ thể bạn muốn gọi.
+
+
+
+
+
+***************************************************************************
+>>>>>CODE DEMO<<<
+ -> Trong phần Explicit Intent là cách phổ thông mình hay dùng trong suốt các demo code vừa qua nên bài này không
+ cần đề cập vì quá quen thuộc
+ => trong phần này ta tiềm hiểu cách chuyển khai xử lý sự kiện thông qua Implicitly Intent
+ cách thức chuyển giao diện Intent mà không cần chỉ định các Component cụ thể
+
+  ## layout: mục tiêu tạo các button: show, send, call, view, edit
+  ## Activity: cách xử lý code ở file class
+     
+      package com.example.chuyengiaodien_tonghop;
+      /*tiềm hiểu về các lớp iNtent: Implicitly vàExplicitly Intent*/
+      import androidx.appcompat.app.AppCompatActivity;
+
+      import android.os.Bundle;
+      import android.view.View;
+      import android.widget.Button;
+      import android.widget.Toast;
+
+      /*trng bài này tôi sẽ xử lý sự kiện các button bằng cách Implicit Intent
+      là một loại Intent trong Android được sử dụng khi bạn muốn thực hiện một hành 
+      động mà không cần chỉ định một thành phần (component) cụ thể để xử lý nó.
+       => cách thức này không cần tạo ra các priavte Buton, init()
+       => hãy xem cách làm sao
+      */
+
+      public class ImplicitlyAndExplicitlyIntent extends AppCompatActivity implements  View.OnClickListener{
+          // tạo ra mảng chứa các ánh xạ id của button
+          private int[] listButton = {
+                  R.id.btn_show,
+                  R.id.btn_send,
+                  R.id.btn_call,
+                  R.id.btn_view,
+                  R.id.btn_edit
+          };
+
+          @Override
+          protected void onCreate(Bundle savedInstanceState) {
+              super.onCreate(savedInstanceState);
+              setContentView(R.layout.activity_implicitly_and_explicitly_intent);
+
+              // xử lý sự kiện cho các button với kiểu Intent Implicit Intent:
+              for(int item: listButton){
+                  Button btn = (Button) findViewById(item);
+                  btn.setOnClickListener(this);
+              }
+
+          }
+
+
+          /*method xử lý sự kiện chuyển giáo diện: dùng kiểu Activity listener kế thừa thêm
+           * implement View.Onlistener*/
+          @Override
+          public void onClick(View v) {
+              // Chức năng show and send đã đc lam ở bài MainActivityL chuyên iao diện và gửi nhận dữ liệu
+              if(v.getId()==R.id.btn_show){
+                  showToast("Button Sho ");
+              }else if(v.getId()==R.id.btn_send){
+                  showToast("Button Send");
+              }else if(v.getId()==R.id.btn_call){
+                  showToast("Button Call");
+              }else if(v.getId()==R.id.btn_view){
+                  showToast("Button View");
+              }else if(v.getId()==R.id.btn_edit){
+                  showToast("Button Edit");
+              }
+          }
+
+
+          /*method showToast*/
+          public void showToast(String msg){
+              Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+          }
+      }
+
+
+
+      ===> phần thực nâng cao se cung cấp nhiều hơn tính năng của lớp Intent này
+      ===> truy cập SourceCodeMau/cachthucchuyengiaodien.. để xem chi tiết

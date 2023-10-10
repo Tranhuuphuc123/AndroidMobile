@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- xin cấp quyền để truy cập đc chức nawg gọi thoại cho btn_call -->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -13,17 +19,26 @@
         android:theme="@style/Theme.Chuyengiaodien_tonghop"
         tools:targetApi="31">
         <activity
+            android:name=".Result_GuivaNhan"
+            android:exported="false" />
+        <activity
+            android:name=".GuiVaNhan_Values_Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ImplicitlyAndExplicitlyIntent"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".childActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

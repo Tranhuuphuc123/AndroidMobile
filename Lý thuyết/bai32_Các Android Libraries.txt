@@ -1,0 +1,51 @@
+********************TUYỂN TẬP CÁC ANDROID LIBRARIES **********************
+
+***********************************************************************************
+>>>> Lib 01: circleImageView:
+ -> thư viện này tạo ảnh dạng hình tròn
+ -> chèn lib vào file gradle:
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+ -> trong layout: gọi đến thư viện này để dùng
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                     .. các values thuộc tính
+         />
+
+
+
+************************************************************************************
+>>>> Lib 02: thư viện photoView:
+ -> có chức năng zoom ảnh trong android
+ -> dẫn lb vào file gradle:
+ -> sử dụng thuộc tính
+ ???????
+ ==> xem lại cấu hình build.gradle project
+
+
+
+*************************************************************************************
+>>>> Lib 03: Request App Permission
+ => Thư viện "request App Permission" trong Android không tồn tại như một thư viện cụ thể. 
+ ta có thể sử dụng các API viết sẵn từ các DEV khác để ứng dụng chức năng này vào phát triển 
+ Android
+ ==> Vậy chức năng chính của thư viện này dùng để làm gì
+ ==> chức năng chính của các thư viện permission cụ thể để quản lý quyền trong Android, Nó
+ giúp xác nhận cho phép quyền truy cập  vào các tài nguyên và tính năng cụ thể trên thiết bị, 
+ như:
+  + máy ảnh
+  + danh bạ
+  + vị trí GPS
+  + microphone
+  + mục ảnh
+  ....và nhiều tính năng khác. 
+  ===> Các quyền này được sử dụng để bảo vệ sự riêng tư của người dùng và đảm bảo rằng các ứng
+  dụng chỉ có thể truy cập và sử dụng thông tin và tài nguyên cần thiết.
+  ===> trong thư viện này tôi giới thiệu một lib API đc viết sẵn rất hay là
+          tedpermission
+
+    -> có thể truy cập vào website để hieur rõ hơn cũng như lấy source
+    "https://github.com/ParkSangGwon/TedPermission"                     // lib source code hg dẫn
+    "https://developer.android.com/guide/topics/permissions/overview"   // tài liệu đọc tham khảo
+     
+     demo:
+        

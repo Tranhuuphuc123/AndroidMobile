@@ -6,4 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".childActivity">
 
+    <TextView
+        android:id="@+id/txt_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="40dp"
+        android:text="Menu child"
+        android:layout_marginTop="200dp"/>
+
+
+    <Button
+        android:id="@+id/btn_intent_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_child"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        android:text="Intent_main"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_rs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/btn_intent_child"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        android:textSize="20dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

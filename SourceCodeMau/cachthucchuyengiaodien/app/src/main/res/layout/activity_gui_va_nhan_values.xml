@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuiVaNhan_Values_Activity"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/txt_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/rectangle"
+        android:gravity="center"
+        android:text="title-top"
+        android:textSize="35dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="65dp" />
+
+    <Button
+        android:id="@+id/btn_changetop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/txt_top"
+        android:layout_marginTop="30dp"
+        android:textSize="30dp"
+        android:text="change top"
+        android:textAllCaps="true"/>
+
+    <Button
+        android:id="@+id/btn_changebottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/btn_changetop"
+        android:layout_marginTop="30dp"
+        android:text="change bottom"
+        android:textAllCaps="true"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/txt_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/btn_changebottom"
+        android:layout_marginTop="30dp"
+        android:text="title bottom"
+        android:textSize="35dp"
+        android:gravity="center"
+        android:background="@drawable/rectangle"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
